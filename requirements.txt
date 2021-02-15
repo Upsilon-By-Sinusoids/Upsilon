@@ -3,3 +3,4 @@ python-decouple
 youtube_dl
 requests
 chess
+PyNaCl
