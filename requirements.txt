@@ -1,3 +1,4 @@
 discord.py
 python-decouple
 youtube_dl
+requests
