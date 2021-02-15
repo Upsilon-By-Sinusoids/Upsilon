@@ -1,0 +1,1 @@
+worker: Upsilon/BOT.py

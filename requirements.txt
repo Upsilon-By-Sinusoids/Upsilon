@@ -1,0 +1,4 @@
+discord.py
+json
+python-decouple
+itertools
