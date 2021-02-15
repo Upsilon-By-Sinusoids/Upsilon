@@ -1,1 +1,1 @@
-worker: Upsilon/BOT.py
+worker: BOT.py
