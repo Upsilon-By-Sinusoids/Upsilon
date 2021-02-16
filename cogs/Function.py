@@ -44,13 +44,8 @@ class Function(commands.Cog):
 
     @commands.command()
     async def nuke(self, ctx, channel: discord.TextChannel):
-        try:
-            await channel.delete()
-            await ctx.send(f'A nuke has been dropped on #{channel}')
-            #await add_reaction(f':nuke1:')
-        except:
-            await ctx.send(f'Invalid coordinates!')
-            #await add_reaction(f':pepetrump:')
+        await channel.delete()
+        await ctx.send(f'A nuke has been dropped on #{channel}')
             
     """@commands.command()
     async def spam(self, ctx):
