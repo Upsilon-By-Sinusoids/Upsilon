@@ -42,14 +42,16 @@ class Function(commands.Cog):
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
 
-    #@commands.command()
-    #async def nuke(self, ctx, channel):
-        #exist = discord.utils.get(guild.channels, name=channel)
-        #if exist is not None:
-        #await exist.delete()
-        #else:
-         #   await ctx.send(f'No channel named, "{channel}", was found')
-
+    @commands.command()
+    async def nuke(self, ctx, channel: discord.TextChannel):
+        try:
+            await channel.delete()
+            await ctx.send(f'A nuke has been dropped on #{channel}')
+            #await add_reaction(f':nuke1:')
+        except:
+            await ctx.send(f'Invalid coordinates!')
+            #await add_reaction(f':pepetrump:')
+            
     """@commands.command()
     async def spam(self, ctx):
         i = 0
