@@ -18,13 +18,11 @@ async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
 @client.command()
-@commands.has_role('Strong Nuclear Force')
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     print('successfully loaded')
 
 @client.command()
-@commands.has_role('Strong Nuclear Force')
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     print('successfully unloaded')
