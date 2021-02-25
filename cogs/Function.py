@@ -45,7 +45,7 @@ class Function(commands.Cog):
 
     @commands.command()
     #@commands.has_role('Strong Nuclear Force')
-    @commands.has_role('Captain')
+    @commands.has_any_role('Captain', 'Strong Nuclear Force')
     async def nuke(self, ctx, channel: discord.TextChannel):
         try:
             await channel.delete()
