@@ -44,14 +44,13 @@ class Function(commands.Cog):
         await ctx.channel.purge(limit=amount+1)
 
     @commands.command()
+    @commands.has_role('Strong Nuclear Force')
+    @commands.has_role('Captain')
     async def nuke(self, ctx, channel: discord.TextChannel):
-        if author.has_role('Captain') :
+        try:
             await channel.delete()
             await ctx.send(f'A nuke has been dropped on #{channel}')
-        if @commands.has_role('Strong Nuclear Force'):
-            await channel.delete()
-            await ctx.send(f'A nuke has been dropped on #{channel}')
-        else :
+        except:
             await ctx.send(f'Why were u trying to delete channel 🤨')
             
     """@commands.command()
