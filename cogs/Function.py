@@ -12,6 +12,7 @@ import functools
 import json
 import requests
 from chess import *
+import os
 
 class Function(commands.Cog):
 
@@ -23,16 +24,6 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Bot is online')
-        
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        x = open('bannedwords.txt', 'r')
-        for i in x.readlines():
-            if i == message.content:
-                await ctx.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
-                await message.delete()
-            else: 
-                pass
   
 
     @commands.Cog.listener()
@@ -50,7 +41,7 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
 
     @commands.command()
-    @commands.has_any_role('Strong Nuclear Force', 'Captain')#, 'Commander - No. 1')
+    @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1')
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
 
@@ -121,8 +112,36 @@ class Function(commands.Cog):
         embed.set_author(name="Corner of the Universe", url="https://discord.gg/CJ7epwcGtc")
         embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
         await ctx.send(embed=embed)
+
+class Moderation(commands.Cog):
+
+    def __init__(self, client):
+        self.client = client
         
-            
+
+    """@commands.Cog.listener()
+    async def on_message(self, message):
+        x = open('bannedwords.txt', 'r')
+        for i in x.readlines():
+            if i == message.content:
+                await ctx.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
+                await message.delete()
+            else: 
+                pass"""
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        with open('bannedwords.txt','r') as f:
+            bad_words = '|'.join(s for l in f for s in l.split())
+            bad_word_checker = re.compile(bad_words).search
+        if bad_word_checker(message.content):
+            await message.delete()
+            await message.channel.send(f"{message.author.mention}, you've been a bad boy")
+            await message.channel.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
+        else:
+            pass
+    
+    
           
         
 board = Board()
@@ -672,5 +691,3 @@ def setup(client):
     #client.add_cog(VoiceState(client))
     client.add_cog(Music(client))
     client.add_cog(Chess(client))
-
-    
