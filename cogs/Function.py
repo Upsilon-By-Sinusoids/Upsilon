@@ -39,7 +39,7 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
 
     @commands.command()
-    @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1')
+    @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'CAPTAIN')
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
 
