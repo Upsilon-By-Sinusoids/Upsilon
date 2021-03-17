@@ -12,7 +12,6 @@ import functools
 import json
 import requests
 from chess import *
-import re
 
 class Function(commands.Cog):
 
