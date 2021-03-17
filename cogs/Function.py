@@ -124,8 +124,8 @@ class Moderation(commands.Cog):
         x = open('bannedwords.txt', 'r')
         for i in x.readlines():
             if message.content == i
-                await ctx.channel.send(f'hmm')
-                await message.delete(message)
+                await ctx.send(f'hmm')
+                await message.delete()
             else: 
                 await ctx.channel.send(f'lmao')
             
