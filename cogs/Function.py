@@ -121,11 +121,12 @@ class Moderation(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         x = open("bannedwords.txt")
-        if message in x.read().split():
+        if message.content in x.read().split():
             await ctx.channel.send(f'hmm')
-            await message.delete()
+            await ctx.message.delete(message)
         else: 
-            pass
+            await ctx.channel.send(f'lmao')
+            
           
         
 board = Board()
