@@ -113,6 +113,7 @@ class Function(commands.Cog):
         
         
 class Moderation(commands.Cog):
+    
     def __init__(self, client):
         self.client = client
         
@@ -121,7 +122,8 @@ class Moderation(commands.Cog):
     async def on_message(self, message):
         x = open("bannedwords.txt")
         if message in x.read().split():
-            message.delete()
+            await ctx.channel.send(f'hmm')
+            await message.delete()
         else: 
             pass
           
