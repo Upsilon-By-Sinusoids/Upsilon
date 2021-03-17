@@ -12,6 +12,7 @@ import functools
 import json
 import requests
 from chess import *
+import re
 
 class Function(commands.Cog):
 
@@ -120,12 +121,17 @@ class Moderation(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message(self, message):
-        x = open("bannedwords.txt")
-        if message.content in x.read().split():
-            await ctx.channel.send(f'hmm')
-            await ctx.message.delete(message)
-        else: 
-            await ctx.channel.send(f'lmao')
+        x = open('bannedwords.txt', 'r')
+        for i in x.readlines():
+            if message.content == i
+                await ctx.channel.send(f'hmm')
+                await message.delete(message)
+            else: 
+                await ctx.channel.send(f'lmao')
+            
+    @commands.command()
+    async def mod(self, ctx):
+        await ctx.send(f'yeah??')
             
           
         
