@@ -23,6 +23,17 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Bot is online')
+        
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        x = open('bannedwords.txt', 'r')
+        for i in x.readlines():
+            if i == message.content:
+                await ctx.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
+                await message.delete()
+            else: 
+                pass
+  
 
     @commands.Cog.listener()
     async def on_member_join(member):
@@ -111,26 +122,6 @@ class Function(commands.Cog):
         embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
         await ctx.send(embed=embed)
         
-        
-class Moderation(commands.Cog):
-    
-    def __init__(self, client):
-        self.client = client
-        
-        
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        x = open('bannedwords.txt', 'r')
-        for i in x.readlines():
-            if message.content == i
-                await ctx.send(f'hmm')
-                await message.delete()
-            else: 
-                await ctx.channel.send(f'lmao')
-            
-    @commands.command()
-    async def mod(self, ctx):
-        await ctx.send(f'yeah??')
             
           
         
