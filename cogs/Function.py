@@ -39,7 +39,7 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
 
     @commands.command()
-    @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'CAPTAIN')
+    @commands.has_any_role('Strong Nuclear Force', 'Captain')#, 'Commander - No. 1')
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
 
@@ -110,6 +110,22 @@ class Function(commands.Cog):
         embed.set_author(name="Corner of the Universe", url="https://discord.gg/CJ7epwcGtc")
         embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
         await ctx.send(embed=embed)
+        
+        
+class Moderation(commands.Cog):
+    def __init__(self, client):
+        self.client = client
+        
+        
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        x = open("bannedwords.txt")
+        if message in x.read().split():
+            message.delete()
+        else: 
+            pass
+          
+        
 board = Board()
 board.legal_moves
 
@@ -648,6 +664,7 @@ class Music(commands.Cog):
 
 def setup(client):
     client.add_cog(Function(client))
+    client.add_cog(Moderation(client))
     #client.add_cog(VoiceError(Exception, client))
     #client.add_cog(YTDLError(Exception, client))
     #client.add_cog(YTDLSource(discord.PCMVolumeTransformer, client))
