@@ -56,7 +56,7 @@ class Function(commands.Cog):
             await channel.delete()
             await ctx.send(f'A nuke has been dropped on #{channel}')
         except:
-            await ctx.send(f'Why were u trying to delete channel 🤨')
+            await ctx.send(f'Why were u trying to delete a channel 🤨')
             
     """@commands.command()
     async def spam(self, ctx):
@@ -148,7 +148,7 @@ class Moderation(commands.Cog):
     
           
         
-"""board = Board()
+board = Board()
 board.legal_moves
 logging.basicConfig(level=logging.DEBUG)
 
@@ -247,16 +247,6 @@ class Chess(commands.Cog):
         """get the game result and end game"""
         await ctx.send(board.result())
         board.reset()
-        
-if __name__ == "__main__":
-    chess1 = chess.Board()
-    chess1.push_san('e4')
-    svg_data = chess.svg.board(chess1, coordinates = False, flipped = False, style = chess.svg.DEFAULT_STYLE)
-    cairosvg.svg2png(bytestring=svg_data, write_to="output2.png")
-    chess2 = chess.Board()
-    #chess2.svg.board(chess2)
-    print(chess1)
-    print(chess2)"""
     
     
 logging.basicConfig(level=logging.DEBUG)
