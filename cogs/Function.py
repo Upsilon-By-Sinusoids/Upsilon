@@ -13,6 +13,10 @@ import json
 import requests
 from chess import *
 import os
+import chess.svg
+import cairo
+import cairosvg
+import logging
 
 class Function(commands.Cog):
 
@@ -146,54 +150,95 @@ class Moderation(commands.Cog):
         
 board = Board()
 board.legal_moves
-
+logging.basicConfig(level=logging.DEBUG)
 
 class Chess(commands.Cog):
     
     def __init__(self, client):
         self.client = client
-
+    
 
     @commands.Cog.listener()
     async def on_ready(self):
         print('chess is working')
 
-    @commands.command()
-    async def playchess(self, ctx, member):
-        """start playing"""
-        await ctx.send(f'{member}, you have been summoned to a chess match')
-
-    @commands.command()
-    async def move(self, ctx, move):
-        """make your move"""
-        try:
-            board.push_san(move)
-            await ctx.send(board)
-            if board.is_checkmate() == True:
-                await ctx.send(f'haha Checkmate sucker!')
-                
-            if board.is_stalemate() == True:
-                await ctx.send(f'Stalemate')
-                
-            if board.can_claim_draw() == True:
-                await ctx.send(f'Draw')
-
-            if board.is_seventyfive_moves() == True:
-                await ctx.send(f'75 moves are over, the match is a draw')
-            else :
-                pass
+    def Get_Picture(self, color):
+        flipped = color == "black"
+        svg_data = chess.svg.board(self.board, flipped = flipped)
+        cairosvg.svg2png(bytestring=svg_data, write_to = "output.png")
         
-        except:
-            await ctx.send(f'Illegal move')
+        
+    def Take_Turn(self):
+        self.white.turn = not self.white.turn
+        self.black.turn = not self.black.turn
+        
+        
+        
+    @commands.command()
+    async def currentposition(self, color):
+        await self.client.say('Current board position:')
+        Get_Picture(color)
+        
+    @commands.command(pass_context=True)
+    async def playchess(self, ctx, name = ''):
+        if self.white != '' and self.black != '':
+            return await self.client.say('There is already a game being played on this server')
+        if len(ctx.message.mentions) == 0:
+            return await self.client.say('You must mention another player to start a game.')
+        if len(ctx.message.mentions) > 1:
+            return await self.client.say('You are mentioning too many people')
+        if ctx.message.mentions[0] == ctx.message.author:
+            return await self.client.say('You cannot play against yourself!')
+
+        author = ctx.message.author
+        opponent = ctx.message.mentions[0]
+        rand = random.randrange(0,2)
+        self.white = Player('white', author) if rand == 0 else Player('white', opponent.name + "#" +  opponent.discriminator)
+        self.black = Player('black', author) if rand != 0 else Player('black', opponent.name + "#" + opponent.discriminator)
+        self.white.turn = True
+        self.Get_Picture('white')
+        await self.client.send_file(ctx.message.channel, fp = 'output.png')
+        await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(self.white.username))
+        
+        
+    @commands.command(pass_context=True)
+    async def move(self, ctx, move = ''):
+        """Make your move"""
+        if self.white == '' and self.black == '':
+            self.client.say('There is no active game available')
+        if move == '':
+            self.client.say('You must supply a move')
+        player = self.white if self.white.turn == True else self.black
+        logging.warning(player.username)
+        logging.warning(ctx.message.author)
+        if str(ctx.message.author) != str(player.username):
+            return await self.client.send_message(ctx.message.channel, 'It is not your turn, {}'.format(ctx.message.author))
+        else:
+            try:
+                self.board.push_san(move)
+                self.Take_Turn()
+                color = "white" if player != self.white else "black"
+                nextuser = self.white.username if player != self.white else self.black.username
+                self.Get_Picture(color)
+                if self.board.is_game_over() == True:
+                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
+                    await self.client.send_message(ctx.message.channel, 'Game over. {}'.format(self.board.result()))
+                    self.Reset()
+                else:
+                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
+                    await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(nextuser))
+            except ValueError:
+                await self.client.send_message(ctx.message.channel, '{} is an illegal move, {}'.format(move, ctx.message.author))
 
     @commands.command()
     async def board(self, ctx):
         """shows the board"""
-        await ctx.send(board)
+        await self.bot.send_file(ctx.message.channel, fp = 'output.png')
 
     @commands.command()
     async def exit(self, ctx):
-        """forfeit the game"""
+        """Only use this if the other person is cheating or making you wait too long.
+        Misuse will result in ban from the server."""
         board.reset()
         await ctx.send(f'Die in Hell')
 
@@ -202,7 +247,19 @@ class Chess(commands.Cog):
         """get the game result and end game"""
         await ctx.send(board.result())
         board.reset()
-
+        
+if __name__ == "__main__":
+    chess1 = chess.Board()
+    chess1.push_san('e4')
+    svg_data = chess.svg.board(chess1, coordinates = False, flipped = False, style = chess.svg.DEFAULT_STYLE)
+    cairosvg.svg2png(bytestring=svg_data, write_to="output2.png")
+    chess2 = chess.Board()
+    #chess2.svg.board(chess2)
+    print(chess1)
+    print(chess2)
+    
+    
+    
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
