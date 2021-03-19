@@ -126,11 +126,11 @@ class Moderation(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         with open('bannedwords.txt') as file:
-            file = file.read().split()
+            file = file.read().strip().lower().split('\n')        
         for i in file:
             if i in message.content.lower():
                 await message.delete()
-                await ctx.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
+                await message.channel.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
             else: 
                 pass
 
