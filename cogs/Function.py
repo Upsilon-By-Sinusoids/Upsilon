@@ -17,6 +17,9 @@ import os
 #import cairo
 #import cairosvg
 #import logging
+from better_profanity import profanity
+
+profanity.load_censor_words_from_file("bannedwords.txt")
 
 class Function(commands.Cog):
 
@@ -130,17 +133,27 @@ class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
         
+    def punish_user():
+        responses = [
+            "You kiss your mother with that mouth, {}?",
+            "Woah {}, That's some colorful language.",
+            "LANGUAGE! {}",
+            "Hey {}, watch your mouth.",
+            "We don't use that kind of language here, {}."
+        ]
 
+        choice = random.choice(responses)
+        choice = choice.format(message.author.mention)
+
+        return choice
+        
+    
     @commands.Cog.listener()
-    async def on_message(message):
-        with open('bannedwords.txt') as file:
-            file = file.read().strip().lower().split('\n')        
-        for i in file:
-            if i in message.content.lower():
+    async def on_message(self, message):
+        if not message.author.client:
+            if profanity.contains_profanity(message.content):
                 await message.delete()
-                await message.channel.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
-            else: 
-                await message.channel.send(f"wtf")
+                await message.channel.send(punish_user())
 
     
     
