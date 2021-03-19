@@ -124,7 +124,7 @@ class Moderation(commands.Cog):
         
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(message):
         with open('bannedwords.txt') as file:
             file = file.read().strip().lower().split('\n')        
         for i in file:
