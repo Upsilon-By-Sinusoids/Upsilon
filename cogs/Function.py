@@ -161,7 +161,7 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
-            await ctx.send(choice)
+            await message.channel.send(choice)
             await message.delete()
     
     
