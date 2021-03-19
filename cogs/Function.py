@@ -150,10 +150,9 @@ class Moderation(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
-        if not message.author.client:
-            if profanity.contains_profanity(message.content):
-                await message.delete()
-                await message.channel.send(punish_user())
+        if profanity.contains_profanity(message.content):
+            await message.delete()
+            await message.channel.send(punish_user())
 
     
     
