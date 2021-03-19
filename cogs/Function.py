@@ -13,10 +13,10 @@ import json
 import requests
 from chess import *
 import os
-import chess.svg
-import cairo
-import cairosvg
-import logging
+#import chess.svg
+#import cairo
+#import cairosvg
+#import logging
 
 class Function(commands.Cog):
 
