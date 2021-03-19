@@ -47,8 +47,8 @@ class Function(commands.Cog):
     @commands.command()
     @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'Commander')
     async def clear(self, ctx, amount=10):
-        channel2 = client.get_channel(822452501244280863)
         await ctx.channel.purge(limit=amount+1)
+        channel2 = client.get_channel(822452501244280863)
         await ctx.channel2.send(f'{message.author.mention} has deleted {limit} messages')
         
 
