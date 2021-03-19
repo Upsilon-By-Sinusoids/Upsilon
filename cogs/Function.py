@@ -37,6 +37,12 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(member):
         print(f'{member} has left the server.')
+        
+    @commands.Cog.listener()
+    async def on_message_delete(message):
+        msg = str(message.author)+ 'deleted message in '+str(message.channel)+': '+str(message.content)
+        chan = client.get_channel(822452501244280863)
+        await ctx.chan.send(f'{msg}')
 
     #commands
 
@@ -48,8 +54,7 @@ class Function(commands.Cog):
     @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'Commander')
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
-        channel2 = client.get_channel(822452501244280863)
-        await ctx.channel2.send(f'{message.author.mention} has deleted {limit} messages')
+        
         
 
     @commands.command()
