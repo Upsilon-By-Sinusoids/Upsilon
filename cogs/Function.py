@@ -135,10 +135,10 @@ class Moderation(commands.Cog):
         
     def punish_user():
         responses = [
-            "You kiss your mother with that mouth, {}?",
-            "Woah {}, That's some colorful language.",
-            "LANGUAGE! {}",
-            "Hey {}, watch your mouth.",
+            "You kiss your mother with that mouth, {}?",\
+            "Woah {}, That's some colorful language.",\
+            "LANGUAGE! {}",\
+            "Hey {}, watch your mouth.",\
             "We don't use that kind of language here, {}."
         ]
 
@@ -153,7 +153,6 @@ class Moderation(commands.Cog):
         if profanity.contains_profanity(message.content):
             await message.delete()
             await message.channel.send(punish_user())
-
     
     
     
