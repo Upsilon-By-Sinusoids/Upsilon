@@ -41,10 +41,10 @@ class Function(commands.Cog):
     async def on_member_remove(member):
         print(f'{member} has left the server.')
         
-    @commands.Cog.listener()
-    async def on_message_delete(message):
-        msg = str(message.author)+ 'deleted message in '+str(message.channel)+': '+str(message.content)
-        await ctx.channel.send(f'{msg}')
+#    @commands.Cog.listener()
+#    async def on_message_delete(message):
+#        msg = str(message.author)+ 'deleted message in '+str(message.channel)+': '+str(message.content)
+#        await ctx.channel.send(f'{msg}')
 
     #commands
 
@@ -153,7 +153,7 @@ class Moderation(commands.Cog):
         user = message.author.mention
         if profanity.contains_profanity(message.content):
             await message.delete()
-            await message.channel.send(punish_user(user))
+            await ctx.send(punish_user(user))
     
     
     
