@@ -133,7 +133,7 @@ class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
         
-    def punish_user(id):
+    def punish_user():
         responses = [
             "You kiss your mother with that mouth, {}?",\
             "Woah {}, That's some colorful language.",\
