@@ -133,7 +133,7 @@ class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
         
-    def punish_user():
+    def punish_user(id):
         responses = [
             "You kiss your mother with that mouth, {}?",\
             "Woah {}, That's some colorful language.",\
@@ -143,16 +143,17 @@ class Moderation(commands.Cog):
         ]
 
         choice = random.choice(responses)
-        choice = choice.format(message.author.mention)
+        choice = choice.format(id)
 
         return choice
         
     
     @commands.Cog.listener()
     async def on_message(self, message):
+        user = message.author.mention
         if profanity.contains_profanity(message.content):
             await message.delete()
-            await message.channel.send(punish_user())
+            await message.channel.send(punish_user(user))
     
     
     
