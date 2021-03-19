@@ -148,104 +148,103 @@ class Moderation(commands.Cog):
     
           
         
-board = Board()
-board.legal_moves
+#board = Board()
+#board.legal_moves
 
-class Chess(commands.Cog):
+#class Chess(commands.Cog):
     
-    def __init__(self, client):
-        self.client = client
-    
+#    def __init__(self, client):
+#        self.client = client
 
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('chess is working')
+#    @commands.Cog.listener()
+#    async def on_ready(self):
+#        print('chess is working')
+#
+#    def Get_Picture(self, color):
+#        flipped = color == "black"
+#        svg_data = chess.svg.board(self.board, flipped = flipped)
+#        cairosvg.svg2png(bytestring=svg_data, write_to = "output.png")
+        
+        
+#    def Take_Turn(self):
+#        self.white.turn = not self.white.turn
+#        self.black.turn = not self.black.turn
+        
+        
+        
+#    @commands.command()
+ #   async def currentposition(self, color):
+  #      await self.client.say('Current board position:')
+   #     Get_Picture(color)
+        
+#    @commands.command(pass_context=True)
+ #   async def playchess(self, ctx, name = ''):
+  #      if self.white != '' and self.black != '':
+   #         return await ctx.send(f'There is already a game being played on this server')
+    #    if len(ctx.message.mentions) == 0:
+     #       return await ctx.send(f'You must mention another player to start a game.')
+      #  if len(ctx.message.mentions) > 1:
+       #     return await self.client.say('You are mentioning too many people')
+        #if ctx.message.mentions[0] == ctx.message.author:
+         #   return await self.client.say('You cannot play against yourself!')
 
-    def Get_Picture(self, color):
-        flipped = color == "black"
-        svg_data = chess.svg.board(self.board, flipped = flipped)
-        cairosvg.svg2png(bytestring=svg_data, write_to = "output.png")
+#        author = ctx.message.author
+ #       opponent = ctx.message.mentions[0]
+  #      rand = random.randrange(0,2)
+   #     self.white = Player('white', author) if rand == 0 else Player('white', opponent.name + "#" +  opponent.discriminator)
+    #    self.black = Player('black', author) if rand != 0 else Player('black', opponent.name + "#" + opponent.discriminator)
+#        self.white.turn = True
+ #       self.Get_Picture('white')
+  #      await self.client.send_file(ctx.message.channel, fp = 'output.png')
+   #     await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(self.white.username))
         
         
-    def Take_Turn(self):
-        self.white.turn = not self.white.turn
-        self.black.turn = not self.black.turn
-        
-        
-        
-    @commands.command()
-    async def currentposition(self, color):
-        await self.client.say('Current board position:')
-        Get_Picture(color)
-        
-    @commands.command(pass_context=True)
-    async def playchess(self, ctx, name = ''):
-        if self.white != '' and self.black != '':
-            return await ctx.send(f'There is already a game being played on this server')
-        if len(ctx.message.mentions) == 0:
-            return await ctx.send(f'You must mention another player to start a game.')
-        if len(ctx.message.mentions) > 1:
-            return await self.client.say('You are mentioning too many people')
-        if ctx.message.mentions[0] == ctx.message.author:
-            return await self.client.say('You cannot play against yourself!')
+    #@commands.command(pass_context=True)
+#    async def move(self, ctx, move = ''):
+#        """Make your move"""
+#        if self.white == '' and self.black == '':
+#            await ctx.send(f'There is no active game available')
+#        if move == '':
+#            await self.client.send('You must supply a move')
+#        player = self.white if self.white.turn == True else self.black
+#        logging.warning(player.username)
+#        logging.warning(ctx.message.author)
+#        if str(ctx.message.author) != str(player.username):
+#            return await self.client.send_message(ctx.message.channel, 'It is not your turn, {}'.format(ctx.message.author))
+#        else:
+#            try:
+#                self.board.push_san(move)
+#                self.Take_Turn()
+#                color = "white" if player != self.white else "black"
+#                nextuser = self.white.username if player != self.white else self.black.username
+#                self.Get_Picture(color)
+#                if self.board.is_game_over() == True:
+#                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
+#                    await self.client.send_message(ctx.message.channel, 'Game over. {}'.format(self.board.result()))
+#                    self.Reset()
+#                else:
+#                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
+#                    await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(nextuser))
+#            except ValueError:
+#                await self.client.send_message(ctx.message.channel, '{} is an illegal move, {}'.format(move, ctx.message.author))
 
-        author = ctx.message.author
-        opponent = ctx.message.mentions[0]
-        rand = random.randrange(0,2)
-        self.white = Player('white', author) if rand == 0 else Player('white', opponent.name + "#" +  opponent.discriminator)
-        self.black = Player('black', author) if rand != 0 else Player('black', opponent.name + "#" + opponent.discriminator)
-        self.white.turn = True
-        self.Get_Picture('white')
-        await self.client.send_file(ctx.message.channel, fp = 'output.png')
-        await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(self.white.username))
-        
-        
-    @commands.command(pass_context=True)
-    async def move(self, ctx, move = ''):
-        """Make your move"""
-        if self.white == '' and self.black == '':
-            await ctx.send(f'There is no active game available')
-        if move == '':
-            await self.client.send('You must supply a move')
-        player = self.white if self.white.turn == True else self.black
-        logging.warning(player.username)
-        logging.warning(ctx.message.author)
-        if str(ctx.message.author) != str(player.username):
-            return await self.client.send_message(ctx.message.channel, 'It is not your turn, {}'.format(ctx.message.author))
-        else:
-            try:
-                self.board.push_san(move)
-                self.Take_Turn()
-                color = "white" if player != self.white else "black"
-                nextuser = self.white.username if player != self.white else self.black.username
-                self.Get_Picture(color)
-                if self.board.is_game_over() == True:
-                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
-                    await self.client.send_message(ctx.message.channel, 'Game over. {}'.format(self.board.result()))
-                    self.Reset()
-                else:
-                    await self.client.send_file(ctx.message.channel, fp = 'output.png')
-                    await self.client.send_message(ctx.message.channel, 'Your move, {}'.format(nextuser))
-            except ValueError:
-                await self.client.send_message(ctx.message.channel, '{} is an illegal move, {}'.format(move, ctx.message.author))
+#    @commands.command()
+#    async def board(self, ctx):
+#        """shows the board"""
+#        await self.client.send_file(ctx.message.channel, fp = 'output.png')
 
-    @commands.command()
-    async def board(self, ctx):
-        """shows the board"""
-        await self.client.send_file(ctx.message.channel, fp = 'output.png')
+#    @commands.command()
+#    async def exit(self, ctx):
+#        """Only use this if the other person is cheating or making you wait too long.
+#        Misuse will result in ban from the server."""
+#        board.reset()
+#        await ctx.send(f'Die in Hell')
 
-    @commands.command()
-    async def exit(self, ctx):
-        """Only use this if the other person is cheating or making you wait too long.
-        Misuse will result in ban from the server."""
-        board.reset()
-        await ctx.send(f'Die in Hell')
-
-    @commands.command()
-    async def result(self, ctx):
-        """get the game result and end game"""
-        await ctx.send(board.result())
-        board.reset()
+#    @commands.command()
+#    async def result(self, ctx):
+#        """get the game result and end game"""
+#        await ctx.send(board.result())
+#        board.reset()
     
     
 
@@ -738,4 +737,4 @@ def setup(client):
     #client.add_cog(SongQueue(client))
     #client.add_cog(VoiceState(client))
     client.add_cog(Music(client))
-    client.add_cog(Chess(client))
+    #client.add_cog(Chess(client))
