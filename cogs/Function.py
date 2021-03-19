@@ -150,7 +150,6 @@ class Moderation(commands.Cog):
         
 board = Board()
 board.legal_moves
-logging.basicConfig(level=logging.DEBUG)
 
 class Chess(commands.Cog):
     
@@ -182,9 +181,9 @@ class Chess(commands.Cog):
     @commands.command(pass_context=True)
     async def playchess(self, ctx, name = ''):
         if self.white != '' and self.black != '':
-            return await self.client.say('There is already a game being played on this server')
+            return await ctx.send(f'There is already a game being played on this server')
         if len(ctx.message.mentions) == 0:
-            return await self.client.say('You must mention another player to start a game.')
+            return await ctx.send(f'You must mention another player to start a game.')
         if len(ctx.message.mentions) > 1:
             return await self.client.say('You are mentioning too many people')
         if ctx.message.mentions[0] == ctx.message.author:
@@ -205,9 +204,9 @@ class Chess(commands.Cog):
     async def move(self, ctx, move = ''):
         """Make your move"""
         if self.white == '' and self.black == '':
-            self.client.say('There is no active game available')
+            await ctx.send(f'There is no active game available')
         if move == '':
-            self.client.say('You must supply a move')
+            await self.client.send('You must supply a move')
         player = self.white if self.white.turn == True else self.black
         logging.warning(player.username)
         logging.warning(ctx.message.author)
@@ -233,7 +232,7 @@ class Chess(commands.Cog):
     @commands.command()
     async def board(self, ctx):
         """shows the board"""
-        await self.bot.send_file(ctx.message.channel, fp = 'output.png')
+        await self.client.send_file(ctx.message.channel, fp = 'output.png')
 
     @commands.command()
     async def exit(self, ctx):
