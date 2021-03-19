@@ -41,8 +41,7 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_message_delete(message):
         msg = str(message.author)+ 'deleted message in '+str(message.channel)+': '+str(message.content)
-        chan = client.get_channel(822452501244280863)
-        await ctx.chan.send(f'{msg}')
+        await ctx.channel.send(f'{msg}')
 
     #commands
 
