@@ -143,17 +143,17 @@ class Moderation(commands.Cog):
         ]
 
         choice = random.choice(responses)
-        choice = choice.format(id)
+        choice = choice.format(message.author.mention)
 
         return choice
         
     
     @commands.Cog.listener()
     async def on_message(self, message):
-        user = message.author.mention
+        txt = punish_user()
         if profanity.contains_profanity(message.content):
             await message.delete()
-            await ctx.send(punish_user(user))
+            await ctx.send(txt)
     
     
     
