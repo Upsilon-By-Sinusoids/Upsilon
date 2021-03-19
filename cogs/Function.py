@@ -132,7 +132,7 @@ class Moderation(commands.Cog):
                 await message.delete()
                 await message.channel.send(f"{message.author.mention}, Refrain from sending inapropriate messages or you will be banned")
             else: 
-                pass
+                await message.channel.send(f"wtf")
 
     
     
