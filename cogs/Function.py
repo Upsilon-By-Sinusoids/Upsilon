@@ -133,20 +133,6 @@ class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
         
-    def punish_user():
-        responses = [
-            "You kiss your mother with that mouth, {}?",\
-            "Woah {}, That's some colorful language.",\
-            "LANGUAGE! {}",\
-            "Hey {}, watch your mouth.",\
-            "We don't use that kind of language here, {}."
-        ]
-
-        choice = random.choice(responses)
-        choice = choice.format(message.author.mention)
-
-        return choice
-        
     
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -164,6 +150,9 @@ class Moderation(commands.Cog):
             await message.channel.send(choice)
             await message.delete()
     
+    @commands.command()
+    async def sn(self, ctx):
+        await ctx.send(f'{server.name}')
     
     
     
