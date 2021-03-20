@@ -148,7 +148,7 @@ class Moderation(commands.Cog):
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
             await message.channel.send(choice)
-            awai message.channel.send(f'{message.server.name}')
+            await message.channel.send(f'{message.server.name}')
             await message.delete()
     
 #    @commands.command()
