@@ -21,7 +21,6 @@ import ctypes
 import ctypes.util
 from better_profanity import profanity
 from datetime import date 
-from time import sleep
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
@@ -66,7 +65,7 @@ class Function(commands.Cog):
                     for i in list:
                         if a.strftime("%Y/%m/%d") == i : 
                             await member.send(f"Happy Birthday {member}, Enjoy your day!") 
-                        sleep(60*60*24)
+                        time.sleep(60*60*24)
         except: print('failed!')
             
         
