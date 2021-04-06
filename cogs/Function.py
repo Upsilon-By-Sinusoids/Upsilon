@@ -47,8 +47,8 @@ class Function(commands.Cog):
         
         
     def ask():
-    list.append(tuple([a])) # make a dictionary instead of list  
-    print(list)
+        list.append(tuple([a])) # make a dictionary instead of list  
+        print(list)
 
     @commands.Cog.listener()
     async def on_member_join(member):
