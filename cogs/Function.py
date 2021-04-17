@@ -88,6 +88,13 @@ class Function(commands.Cog):
         await ctx.send(f'{message.author.mention} deleted {amount} messages')
         
         
+    @commands.command()
+    async def invite(self, ctx):
+        """Generate an invite link to invite this bot to your server"""
+        await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=4294442871&scope=bot')
+        time.sleep(0.2)
+        await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
+        
 
     @commands.command()
     @commands.has_any_role('Captain', 'Strong Nuclear Force')
