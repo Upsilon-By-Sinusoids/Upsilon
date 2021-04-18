@@ -22,7 +22,7 @@ import ctypes.util
 from better_profanity import profanity
 from datetime import date 
 
-profanity.load_censor_words_from_file("bannedwords.txt")
+#profanity.load_censor_words_from_file("bannedwords.txt")
 
 class Function(commands.Cog):
 
