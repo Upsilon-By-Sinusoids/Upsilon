@@ -770,12 +770,12 @@ class Music(commands.Cog):
 
 def setup(client):
     client.add_cog(Function(client))
-    client.add_cog(Moderation(client))
+    #client.add_cog(Moderation(client))
     #client.add_cog(VoiceError(Exception, client))
     #client.add_cog(YTDLError(Exception, client))
     #client.add_cog(YTDLSource(discord.PCMVolumeTransformer, client))
     #client.add_cog(Song(client))
     #client.add_cog(SongQueue(client))
     #client.add_cog(VoiceState(client))
-    client.add_cog(Music(client))
+    #client.add_cog(Music(client))
     #client.add_cog(Chess(client))
