@@ -10,6 +10,7 @@ import random
 import asyncio
 import functools
 import json
+from discord.ext.commands import has_permissions
 import requests
 from chess import *
 import os
@@ -189,6 +190,20 @@ class Moderation(commands.Cog):
                 print(message.content)
                 await message.channel.send(choice)
                 await message.delete()
+    @commands.command()
+    @has_permissions(kick_members=True)  
+    async def kick(self, ctx, Member: discord.Member):
+              await client.kick(Member)
+
+    @kick.error
+    async def kick_error(error, ctx):
+       if isinstance(error, MissingPermissions):
+           await ctx.send("You don't have permission to do that!")
+    
+    
+    
+    
+    
     
 #    @commands.command()
 #    async def sn(self, ctx):
