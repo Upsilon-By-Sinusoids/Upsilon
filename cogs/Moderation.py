@@ -60,3 +60,7 @@ class Moderation(commands.Cog):
     @commands.command()
     async def kick(self, ctx, Member: discord.Member):
         await bot.kick(Member)
+        
+        
+def setup(client):
+    client.add_cog(Moderation(client))
