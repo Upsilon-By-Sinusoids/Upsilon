@@ -157,12 +157,12 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to  and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    @commands.command()
-    async def linkserver(self, ctx):
-        embed=discord.Embed(title="A growing community of nerds.", url="https://discord.gg/CJ7epwcGtc", description="Place for nerds to find peace, balance, meaning, knowledge & ideas. Social, science, classical music, opera, classic films, comics, eyebleach, movies, fantasy, scifi  & general nerdy things. Is a SFW server.", color=0x270de7)
-        embed.set_author(name="Corner of the Universe", url="https://discord.gg/CJ7epwcGtc")
-        embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
-        await ctx.send(embed=embed)
+    #@commands.command()
+    #async def linkserver(self, ctx):
+    #    embed=discord.Embed(title="A growing community of nerds.", url="https://discord.gg/CJ7epwcGtc", description="Place for nerds to find peace, balance, meaning, knowledge & ideas. Social, science, classical music, opera, classic films, comics, eyebleach, movies, fantasy, scifi  & general nerdy things. Is a SFW server.", color=0x270de7)
+    #    embed.set_author(name="Corner of the Universe", url="https://discord.gg/CJ7epwcGtc")
+    #    embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
+    #    await ctx.send(embed=embed)
 
 class Moderation(commands.Cog):
 
@@ -183,7 +183,7 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
-            print(message, message.author)
+            print(message.content)
             await message.channel.send(choice)
             await message.delete()
     
