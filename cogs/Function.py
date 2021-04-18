@@ -183,10 +183,12 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
-            print(message.content)
-            print(message.author.roles)
-            await message.channel.send(choice)
-            await message.delete()
+            if 784459718465945631 in message.author.roles or "Strong Nuclear Force" in message.author.roles:
+                return
+            else:
+                print(message.content)
+                await message.channel.send(choice)
+                await message.delete()
     
 #    @commands.command()
 #    async def sn(self, ctx):
