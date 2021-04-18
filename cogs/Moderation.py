@@ -1,8 +1,28 @@
+import discord 
+from discord.ext import commands, tasks
+from itertools import cycle
+import time
+import youtube_dl
+from async_timeout import timeout
+import discord.utils
+import math
+import random
+import asyncio
+import functools
+import json
+import requests
+from chess import *
+import os
+#import chess.svg
+#import cairo
+#import cairosvg
+#import logging
+import ctypes
+import ctypes.util
+from better_profanity import profanity
+from datetime import date 
 
-
-
-
-
+profanity.load_censor_words_from_file("bannedwords.txt")
 
 
 class Moderation(commands.Cog):
