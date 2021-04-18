@@ -195,7 +195,8 @@ class Moderation(commands.Cog):
                 await message.delete()
                 
                 
-    @commands.has_permissions(kick_members=True)  
+    @commands.has_permissions(kick_members=True) 
+    @commands.command()
     async def kick(self, ctx, Member: discord.Member):
         await bot.kick(Member)
 
