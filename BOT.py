@@ -19,16 +19,14 @@ async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
 @client.command()
-@has_permissions(kick_members=True)  
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
-    print('successfully loaded')
+    await ctx.send(f'successfully loaded {extension}')
 
 @client.command()
-@has_permissions(kick_members=True)  
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
-    print('successfully unloaded')
+    await ctx.send(f'successfully unloaded {extension}')
 
 @client.command()
 async def ping(ctx):
