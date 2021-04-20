@@ -23,6 +23,7 @@ async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     await ctx.send(f'successfully loaded {extension}')
 
+@commands.has_permissions(manage_guild=True)
 @client.command()
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
