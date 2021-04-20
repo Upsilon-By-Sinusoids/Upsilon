@@ -85,7 +85,6 @@ class Function(commands.Cog):
     @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'Commander')
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
-        await ctx.send(f'{message.author.mention} deleted {amount} messages')
         
         
     @commands.command()
@@ -148,13 +147,14 @@ class Function(commands.Cog):
         embed.add_field(name="Click on the link above", value="And make sure to follow the blog in order to get updates directly in your inbox", inline=False)
         embed.set_footer(text="it also has various CTFs")
         await ctx.send(embed=embed)
+        
     @commands.command()
     async def server(self, ctx):
-        """creates an embed with an invite link for this server"""
+        """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
         embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
         embed.add_field(name="https://discord.gg/aXVWmDxRmF      ", value="Click on the server name to join the server and please share this invite link.", inline=False)
-        embed.set_footer(text="This server was created with the idea that knowledge must be accessible to  and attainable by all individuals for free.")
+        embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
     #@commands.command()
@@ -282,11 +282,5 @@ class Function(commands.Cog):
 def setup(client):
     client.add_cog(Function(client))
     #client.add_cog(Moderation(client))
-    #client.add_cog(VoiceError(Exception, client))
-    #client.add_cog(YTDLError(Exception, client))
-    #client.add_cog(YTDLSource(discord.PCMVolumeTransformer, client))
-    #client.add_cog(Song(client))
-    #client.add_cog(SongQueue(client))
-    #client.add_cog(VoiceState(client))
     #client.add_cog(Music(client))
     #client.add_cog(Chess(client))
