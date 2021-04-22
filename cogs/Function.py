@@ -39,11 +39,11 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(member):
         await member.send(f'hola!')
-        print(f'Welcome {member}, glad to see that you have joined the server. Head over to the #introduction channel and introduce yourself')
+        print(f'{member} joined')
 
     @commands.Cog.listener()
     async def on_member_remove(member):
-        print(f'{member} has left the server.')
+        print(f'{member} left')
         
         
     def ask():
