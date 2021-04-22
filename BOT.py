@@ -13,6 +13,27 @@ status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telesco
 async def on_ready():
     change_status.start()
     print('status changed')
+    
+@client.event
+async def on_member_join(member):
+    await member.send(f'Please provide your Date of Birth, we will use it to greet you on your birthday; if you dont wanna.... type "no".')
+    await member.send(f'If u decide to provide your date of birth, please follow the following format: DD/MM')
+    try:
+        if response.content.lower() == "no": 
+            await member.send(f'Alright!')
+            await member.send(f'Have a good day ahead and Stay Safe!')
+        if response.content.lower().replace('/','').isnum() == True:
+            a = response.content.lower()
+            while True :
+                ask()
+                a = datetime.datetime.today()
+                for i in list:
+                    if a.strftime("%Y/%m/%d") == i : 
+                        await member.send(f"Happy Birthday {member}, Enjoy your day!") 
+                    time.sleep(60*60*24)
+    except: print('failed!')
+    
+    
 
 @tasks.loop(hours=1)
 async def change_status():
