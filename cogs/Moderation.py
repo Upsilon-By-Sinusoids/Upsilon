@@ -51,7 +51,7 @@ class Moderation(commands.Cog):
             if 784459718465945631 in message.author.roles or "Strong Nuclear Force" in message.author.roles:
                 return
             else:
-                print(message.content, message.server.name, message.channel, sep="\n")
+                print(message.content, message.channel, sep="\n")
                 await message.channel.send(choice)
                 await message.delete()
                 
