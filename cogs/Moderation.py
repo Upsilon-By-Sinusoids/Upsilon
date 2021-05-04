@@ -52,7 +52,7 @@ class Moderation(commands.Cog):
                 return
             else:
                 print(message.content, message.channel, sep="\n")
-                await message.channel.send(choice)
+                await message.channel.send(choice).add_reaction(":nuke2:")
                 await message.delete()
                 
                 
