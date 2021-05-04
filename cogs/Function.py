@@ -83,7 +83,7 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
 
     @commands.command()
-    @commands.has_any_role('Strong Nuclear Force', 'Captain', 'Commander - No. 1', 'Commander')
+    @commands.has_permissions(manage_guild=True)
     async def clear(self, ctx, amount=10):
         await ctx.channel.purge(limit=amount+1)
         
@@ -97,7 +97,7 @@ class Function(commands.Cog):
         
 
     @commands.command()
-    @commands.has_any_role('Captain', 'Strong Nuclear Force')
+    @commands.has_permissions(manage_guild=True)
     async def nuke(self, ctx, channel: discord.TextChannel):
         try:
             await channel.delete()
