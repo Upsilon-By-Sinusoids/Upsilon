@@ -510,7 +510,7 @@ class Music(commands.Cog):
                     source = await YTDLSource.create_source(ctx, search, loop=self.client.loop)
                 except:
                     c_path = os.path.dirname(os.path.realpath(__file__))
-                    system("spotdl -f " + '""' + c_path + '""' + " -s " + url)
+                    system("spotdl -f " + '""' + c_path + '""' + " -s " + search)
             except YTDLError as e:
                 await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             else:
