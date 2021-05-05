@@ -1,7 +1,6 @@
 discord.py
 python-decouple
 youtube_dl
-requests
 chess
 PyNaCl
 better_profanity
