@@ -34,24 +34,21 @@ class Spotify(commands.Cog):
         font2 = ImageFont.truetype('AquireBold.otf', 14)
         font3 = ImageFont.truetype('oasis.ttf', 12)
         font4 = ImageFont.truetype('oasis.ttf', 12)
-        font5 = ImageFont.truetype('oasis.ttf', 12)
 
         #POS
         title_txt = 150, 30
         artist_txt = 150, 60
         album_txt = 150, 80
         start_txt = 150, 122
-        end_txt = 515, 122
         dur_txt = 332, 125
 
         draw = ImageDraw.Draw(bg_img)
         draw.text(title_txt, spt_res.title, 'white', font=font)
         draw.text(artist_txt, f'by {spt_res.artist}', 'blue', font=font1)
         draw.text(album_txt, spt_res.album, 'white', font=font2)
-        draw.text(start_txt, spt_res.start, 'white', font=font3)
-        draw.text(end_txt, spt_res.end, 'white', font=font4)
+        draw.text(start_txt, '0.0', 'white', font=font3)
         draw.text(dur_txt, f"{dateutil.parser.parse(str(spt_res.duration)).strftime('%M:%S')}",
-         'white', font=font5)
+         'white', font=font4)
 
         
         #COLOUR
