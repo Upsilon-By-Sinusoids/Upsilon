@@ -16,9 +16,10 @@ class Spotify(commands.Cog):
     @commands.command()
     async def track(self, ctx, user: discord.Member = None):
         user = user or ctx.author
-        spt_res = next((act for act in user.activities if isinstance(act, discord.Spotify)), None)
+        spt_res = next((activity for activity in user.activities if isinstance(activity, discord.Spotify)), None)
         
-        if spt_res in None: await ctx.send(f'{user} is not listening to Spotify')
+        if spt_res in None: 
+            await ctx.send(f'{user} is not listening to Spotify')
 
 
         #IMAGES
