@@ -349,11 +349,8 @@ class Music(commands.Cog):
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
 
-    @commands.command(name='volume', aliases=["vol"], description=config.HELP_VOL_LONG, help=config.HELP_VOL_SHORT)
+    @commands.command(name='volume', aliases=["vol"])
     async def _volume(self, ctx, *args):
-        if ctx.guild is None:
-            await ctx.send(config.NO_GUILD_MESSAGE)
-            return
 
         if await utils.play_check(ctx) == False:
             return
