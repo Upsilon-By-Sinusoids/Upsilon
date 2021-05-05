@@ -506,13 +506,23 @@ class Music(commands.Cog):
 
         async with ctx.typing():
             try:
+                source = await YTDLSource.create_source(ctx, search, loop=self.client.loop)
+            except:
                 try:
-                    source = await YTDLSource.create_source(ctx, search, loop=self.client.loop)
-                except:
                     c_path = os.path.dirname(os.path.realpath(__file__))
                     system("spotdl -f " + '""' + c_path + '""' + " -s " + search)
-            except YTDLError as e:
-                await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
+                    for file in os.listdir("./"):
+                        if file.endswith(".mp3"):
+                            name = file
+                            print(f"Renamed File: {file}\n")
+                            os.rename(file, "song.mp3")
+                        
+                            voice.play(discord.FFmpegPCMAudio("song.mp3"))
+                            voice.source = discord.PCMVolumeTransformer(voice.source)
+                            voice.source.volume = 0.07
+               
+                except YTDLError as e:
+                    await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             else:
                 song = Song(source)
 
