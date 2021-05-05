@@ -23,7 +23,7 @@ class Spotify(commands.Cog):
 
         #IMAGES
         bg_img = Image.open('spotify.png')
-        album_img = Image.open(requests.get(spt_res.album_cover_url stream=True).raw().convert('RGBA'))
+        album_img = Image.open(requests.get(spt_res.album_cover_url, stream=True).raw().convert('RGBA'))
 
         #FONTS
         font = ImageFont.truetype('debrosee.ttf', 16)
