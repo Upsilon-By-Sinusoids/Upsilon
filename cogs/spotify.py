@@ -18,7 +18,7 @@ class Spotify(commands.Cog):
         user = user or ctx.author
         spt_res = next((activity for activity in user.activities if isinstance(activity, discord.Spotify)), None)
         
-        if spt_res in None: 
+        if spt_res is None: 
             await ctx.send(f'{user} is not listening to Spotify')
 
 
