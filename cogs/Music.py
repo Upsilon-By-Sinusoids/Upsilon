@@ -349,18 +349,33 @@ class Music(commands.Cog):
         await ctx.voice_state.stop()
         del self.voice_states[ctx.guild.id]
 
-    @commands.command(name='volume')
-    async def _volume(self, ctx: commands.Context, *, volume: int):
-        """Sets the volume of the player."""
+    @commands.command(name='volume', aliases=["vol"], description=config.HELP_VOL_LONG, help=config.HELP_VOL_SHORT)
+    async def _volume(self, ctx, *args):
+        if ctx.guild is None:
+            await ctx.send(config.NO_GUILD_MESSAGE)
+            return
 
-        if not ctx.voice_state.is_playing:
-            return await ctx.send('Nothing being played at the moment.')
+        if await utils.play_check(ctx) == False:
+            return
 
-        if 0 > volume > 100:
-            return await ctx.send('Volume must be between 0 and 100')
+        if len(args) == 0:
+            await ctx.send("Current volume: {}% :speaker:".format(utils.guild_to_audiocontroller[ctx.guild]._volume))
+            return
 
-        ctx.voice_state.volume = volume / 100
-        await ctx.send('Volume of the player set to {}%'.format(volume))
+        try:
+            volume = args[0]
+            volume = int(volume)
+            if volume > 100:
+                raise Exception('')
+            current_guild = utils.get_guild(self.client, ctx.message)
+
+            if utils.guild_to_audiocontroller[current_guild]._volume >= volume:
+                await ctx.send('Volume set to {}% :sound:'.format(str(volume)))
+            else:
+                await ctx.send('Volume set to {}% :loud_sound:'.format(str(volume)))
+            utils.guild_to_audiocontroller[current_guild].volume = volume
+        except:
+            await ctx.send("Error: Volume must be a number 1-100")
 
     @commands.command(name='now', aliases=['current', 'playing'])
     async def _now(self, ctx: commands.Context):
@@ -373,7 +388,7 @@ class Music(commands.Cog):
         """Pauses the currently playing song."""
 
         if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_playing():
-            ctx.voice_state.voice.pause()
+            await ctx.voice_state.voice.pause()
             await ctx.message.add_reaction('⏯')
 
     @commands.command(name='resume')
@@ -381,17 +396,17 @@ class Music(commands.Cog):
         """Resumes a currently paused song."""
 
         if not ctx.voice_state.is_playing and ctx.voice_state.voice.is_paused():
-            ctx.voice_state.voice.resume()
+            await ctx.voice_state.voice.resume()
             await ctx.message.add_reaction('⏯')
 
     @commands.command(name='stop')
     async def _stop(self, ctx: commands.Context):
         """Stops playing song and clears the queue."""
 
-        ctx.voice_state.songs.clear()
+        await ctx.voice_state.songs.clear()
 
         if not ctx.voice_state.is_playing:
-            ctx.voice_state.voice.stop()
+            await ctx.voice_state.voice.stop()
             await ctx.message.add_reaction('⏹')
 
     @commands.command(name='skip')
