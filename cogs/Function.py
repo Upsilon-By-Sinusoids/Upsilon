@@ -34,6 +34,11 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Bot is online')
+        
+    @commands.Cog.listener()
+    async def on_message(message):
+        if message.content.startswith('owner')
+            await message.send(f'message.guild.owner_id')
   
 
     @commands.Cog.listener()
