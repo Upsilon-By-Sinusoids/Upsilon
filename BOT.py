@@ -9,6 +9,10 @@ import json
 client = commands.Bot(command_prefix = '.')
 status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telescope', 'with the Astronauts on the International Space Station'])
 
+intents = discord.Intents.default()
+intents.members = True
+intents.presences = True
+
 @client.event
 async def on_ready():
     change_status.start()
