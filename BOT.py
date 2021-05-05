@@ -8,7 +8,7 @@ import json
 
 intents = discord.Intents().all()
 
-client = commands.Bot(command_prefix = '.')
+client = commands.Bot(command_prefix = '.', intents = intents)
 status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telescope', 'with the Astronauts on the International Space Station'])
 
 intents = discord.Intents.default()
