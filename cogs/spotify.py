@@ -7,6 +7,7 @@ from PIL import Image, ImageFont, ImageDraw
 from spotipy.oauth2 import SpotifyClientCredentials
 
 sp = spotipy.Spotify()
+scope = 'playlist-read-private'
 
 class Spotify(commands.Cog):
     def __init__(self, client):
@@ -16,9 +17,9 @@ class Spotify(commands.Cog):
     async def on_ready(self):
         print('Spotify is working')
         
-    @commands.command()
-    async def playlists(self, ctx, user: discord.Member = None):
-        await ctx.send(f'{sp.current_user_playlists}')
+    #@commands.command()
+    #async def playlists(self, ctx, user: discord.Member = None):
+    #    await ctx.send(f'{sp.current_user_playlists}')
 
     
     @commands.command()
