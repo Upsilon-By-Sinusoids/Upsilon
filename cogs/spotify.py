@@ -52,7 +52,7 @@ class Spotify(commands.Cog):
 
         
         #COLOUR
-        album_clr = album_img.getpixel(250, 100)
+        album_clr = album_img.getpixel((250, 100))
         bg_colour = Image.new('RGBA', bg_img.size, album_clr)
         bg_colour.paste(bg_img, (0,0), bg_img)
 
