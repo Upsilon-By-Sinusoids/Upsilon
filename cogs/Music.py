@@ -9,6 +9,9 @@ import math
 import random
 import spotdl
 import asyncio
+import os
+#import shutil
+from os import system
 import functools
 import json
 import requests
