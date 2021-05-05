@@ -7,9 +7,7 @@ from async_timeout import timeout
 import discord.utils
 import math
 import random
-from spotdl.authorize.services import AuthorizeSpotify
 import sptodl
-from spotdl.metadata_search import MetadataSearch
 import asyncio
 import functools
 import json
@@ -24,11 +22,6 @@ import ctypes
 import ctypes.util
 from better_profanity import profanity
 from datetime import date 
-
-AuthorizeSpotify(
-    client_id="clientid",
-    client_secret="clientsecret",
-)
 
 
 print("ctypes - Find opus:")
@@ -513,7 +506,8 @@ class Music(commands.Cog):
                 try:
                     source = await YTDLSource.create_source(ctx, search, loop=self.client.loop)
                 except:
-                    spotify()
+                    c_path = os.path.dirname(os.path.realpath(__file__))
+                    system("spotdl -f " + '""' + c_path + '""' + " -s " + url)
             except YTDLError as e:
                 await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
             else:
@@ -533,10 +527,10 @@ class Music(commands.Cog):
                 raise commands.CommandError('Bot is already in a voice channel.')
             
 
-def spotify():
-    searcher = MetadataSearch(search)
-    metadata = searcher.on_spotify()
-    return metadata["external_urls"]["spotify"]
+#def spotify():
+#    searcher = MetadataSearch(search)
+#    metadata = searcher.on_spotify()
+#    return metadata["external_urls"]["spotify"]
    
             
 def setup(client):
