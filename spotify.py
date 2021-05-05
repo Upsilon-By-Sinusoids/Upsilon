@@ -7,6 +7,10 @@ from PIL import Image, ImageFont, ImageDraw
 class Spotify(commands.Cog):
     def __init__(self, client):
         self.client = client
+        
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('Spotify is working')
 
     
     @commands.command()
