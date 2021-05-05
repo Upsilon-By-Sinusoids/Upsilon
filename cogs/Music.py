@@ -7,7 +7,7 @@ from async_timeout import timeout
 import discord.utils
 import math
 import random
-import sptodl
+import spotdl
 import asyncio
 import functools
 import json
