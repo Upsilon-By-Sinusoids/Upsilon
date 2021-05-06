@@ -521,9 +521,9 @@ class Music(commands.Cog):
                             print(f"Renamed File: {file}\n")
                             os.rename(file, "song.mp3")
                         
-                            state.play(discord.FFmpegPCMAudio("song.mp3"))
-                            state.source = discord.PCMVolumeTransformer(state.source)
-                            state.source.volume = 0.07
+                            ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp3"))
+                            ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
+                            ctx.voice_client.channel.source.volume = 0.07
                
                 except YTDLError as e:
                     await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
