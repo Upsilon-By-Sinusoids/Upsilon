@@ -502,8 +502,6 @@ class Music(commands.Cog):
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
       
-        channel = ctx.message.author.voice.channel
-        state = await channel.connect()
 
         if not ctx.voice_state.voice:
             await ctx.invoke(self._join)
