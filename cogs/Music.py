@@ -510,7 +510,7 @@ class Music(commands.Cog):
             except:
                 try:
                     c_path = os.path.dirname(os.path.realpath(__file__))
-                    system("spotdl " +  search)
+                    system("spotdl " +  search +" --ignore-ffmpeg-version" )
                     for file in os.listdir("./"):
                         if file.endswith(".mp3"):
                             name = file
