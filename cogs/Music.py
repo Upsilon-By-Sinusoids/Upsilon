@@ -520,6 +520,8 @@ class Music(commands.Cog):
                             name = file
                             print(f"Renamed File: {file}\n")
                             os.rename(file, "song.mp3")
+                            
+                            await ctx.send(file=discord.File(r'song.mp3'))
                         
                             ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp3"))
                             ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
