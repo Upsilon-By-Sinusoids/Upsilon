@@ -502,7 +502,7 @@ class Music(commands.Cog):
         A list of these sites can be found here: https://rg3.github.io/youtube-dl/supportedsites.html
         """
       
-        state = get(bot.voice_clients, guild=ctx.guild)
+        state = get(client.voice_clients, guild=ctx.guild)
 
         if not ctx.voice_state.voice:
             await ctx.invoke(self._join)
