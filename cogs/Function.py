@@ -42,13 +42,13 @@ class Function(commands.Cog):
   
 
     @commands.Cog.listener()
-    async def on_member_join(member):
+    async def on_member_join(self, member):
         await member.send(f'hola!')
-        print(f'{member} joined')
+        print(f'{member} joined {member.guild}')
 
     @commands.Cog.listener()
-    async def on_member_remove(member):
-        print(f'{member} left')
+    async def on_member_remove(self, member):
+        print(f'{member} left from {member.guild}')
         
         
     def ask():
