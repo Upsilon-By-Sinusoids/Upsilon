@@ -39,6 +39,14 @@ class Function(commands.Cog):
     #async def on_message(message):
     #    if message.content.startswith('owner')
     #        await message.send(f'message.guild.owner_id')
+    
+    @commands.Cog.listener()
+    async def on_guild_join(guild):
+        print(f'{guild} joined by bot')
+        
+    @commands.Cog.listener()
+    async def on_guild_remove(guild):
+        print(f'bot has left {guild}')
   
 
     @commands.Cog.listener()
