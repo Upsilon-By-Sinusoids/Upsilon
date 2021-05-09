@@ -15,11 +15,11 @@ status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telesco
 #intents.members = True
 #intents.presences = True
 
-async for guild in client.fetch_guilds(limit=150):
-    member = "ΔΨφ#6251"
-    channel = await member.create_dm()
-    print(guild.name)
-    await channel.send(list(guild.name))
+#async for guild in client.fetch_guilds(limit=150):
+#    member = "ΔΨφ#6251"
+#    channel = await member.create_dm()
+#    print(guild.name)
+#    await channel.send(list(guild.name))
     
 
 @client.event
