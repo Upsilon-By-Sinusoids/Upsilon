@@ -15,13 +15,20 @@ status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telesco
 #intents.members = True
 #intents.presences = True
 
+async for guild in client.fetch_guilds(limit=150):
+    member = "ΔΨφ#6251"
+    channel = await member.create_dm()
+    print(guild.name)
+    await channel.send(list(guild.name))
+    
+
 @client.event
 async def on_ready():
     change_status.start()
     print('status changed')
     
 @client.event
-async def on_member_join(ctx, member):
+async def on_member_join(member):
     await member.send(f'Please provide your Date of Birth, we will use it to greet you on your birthday; if you dont wanna.... type "no".')
     await member.send(f'If u decide to provide your date of birth, please follow the following format: DD/MM')
     try:
@@ -45,6 +52,7 @@ async def on_member_join(ctx, member):
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
+@commands.has_permissions(manage_guild=True)
 @client.command()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
