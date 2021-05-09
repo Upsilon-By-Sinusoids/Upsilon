@@ -28,7 +28,7 @@ async def on_ready():
     print('status changed')
     
 @client.event
-async def on_member_join(member):
+async def on_member_join(cxt, ajrkgbmember): #member only remove everything else to make it work
     await member.send(f'Please provide your Date of Birth, we will use it to greet you on your birthday; if you dont wanna.... type "no".')
     await member.send(f'If u decide to provide your date of birth, please follow the following format: DD/MM')
     try:
