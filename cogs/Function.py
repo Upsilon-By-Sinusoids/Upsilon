@@ -41,17 +41,17 @@ class Function(commands.Cog):
     #        await message.send(f'message.guild.owner_id')
     
     @commands.Cog.listener()
-    async def on_guild_join(guild):
+    async def on_guild_join(self, guild):
         print(f'{guild} joined by bot')
         
     @commands.Cog.listener()
-    async def on_guild_remove(guild):
+    async def on_guild_remove(self, guild):
         print(f'bot has left {guild}')
   
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        await member.send(f'hola!')
+        #await member.send(f'hola!')
         print(f'{member} joined {member.guild}')
 
     @commands.Cog.listener()
