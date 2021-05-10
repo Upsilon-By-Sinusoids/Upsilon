@@ -46,7 +46,6 @@ async def on_member_join(cxt, ajrkgbmember): #member only remove everything else
                     time.sleep(60*60*24)
     except: print('failed!')
     
-    
 
 @tasks.loop(hours=1)
 async def change_status():
