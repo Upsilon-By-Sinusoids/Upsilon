@@ -104,7 +104,7 @@ class Function(commands.Cog):
     @commands.command()
     async def servers(self, ctx):
         member = "ΔΨφ#6251"
-        for guild in ctx.fetch_guilds(limit=150):
+        for guild in self.fetch_guilds(limit=150):
             channel = await member.create_dm()
             print(guild.name)
             await channel.send(list(guild.name))
