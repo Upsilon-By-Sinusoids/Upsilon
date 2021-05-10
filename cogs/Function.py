@@ -102,6 +102,14 @@ class Function(commands.Cog):
         
         
     @commands.command()
+    async def servers(self, ctx):
+        member = "ΔΨφ#6251"
+        for guild in client.fetch_guilds(limit=150):
+            channel = await member.create_dm()
+            print(guild.name)
+            await channel.send(list(guild.name))
+        
+    @commands.command()
     async def invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=4294442871&scope=bot')
