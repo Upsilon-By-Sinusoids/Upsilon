@@ -24,6 +24,9 @@ from datetime import date
 
 #profanity.load_censor_words_from_file("bannedwords.txt")
 
+client = discord.Client
+
+
 class Function(commands.Cog):
 
     def __init__(self, client):
