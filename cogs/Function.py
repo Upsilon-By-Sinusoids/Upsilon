@@ -182,7 +182,7 @@ class Function(commands.Cog):
         await ctx.send(embed=embed)
         
     @commands.command()
-    async def support_server(self, ctx):
+    async def server(self, ctx):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
         embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
