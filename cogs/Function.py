@@ -96,11 +96,13 @@ class Function(commands.Cog):
 
     @commands.command()
     async def hello(self, ctx):
+        """Greets you"""
         await ctx.send(f'Hey there.')
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def clear(self, ctx, amount=10):
+        """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
         await ctx.channel.purge(limit=amount+1)
         
     @commands.has_role("Strong Nuclear Force")
@@ -112,6 +114,11 @@ class Function(commands.Cog):
             channel = await member.create_dm()
             print(guild.name)
             await channel.send(list(guild.name))
+            
+    @commands.has_role("Strong Nuclear Force")
+    @commands.command()
+    async def profile(self, ctx, user : discord.Member = None):
+        await ctx.send(fetch_user_profile(user.id)
         
     @commands.command()
     async def invite(self, ctx):
@@ -175,7 +182,7 @@ class Function(commands.Cog):
         await ctx.send(embed=embed)
         
     @commands.command()
-    async def server(self, ctx):
+    async def support_server(self, ctx):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
         embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
