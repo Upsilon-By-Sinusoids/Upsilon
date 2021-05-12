@@ -118,7 +118,7 @@ class Function(commands.Cog):
     @commands.has_role("Strong Nuclear Force")
     @commands.command()
     async def profile(self, ctx, user : discord.Member = None):
-        await ctx.send(fetch_user_profile(user.id)
+        await ctx.send(fetch_user_profile(user.id))
         
     @commands.command()
     async def invite(self, ctx):
