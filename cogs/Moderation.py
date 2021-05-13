@@ -51,7 +51,7 @@ class Moderation(commands.Cog):
             if message.guild.name == "Corner of the Universe":
                 return
             else:
-                print(message.content, message.channel, sep="\n")
+                print(message.content, message.channel, message.guild.name, sep="\t")
                 await message.channel.send(choice)
                 await message.delete()
                 
