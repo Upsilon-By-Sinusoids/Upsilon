@@ -27,8 +27,8 @@ from datetime import date
 bot = discord.Client
 
 def writefunc(a):
-    a = open("fileTowrite.txt","w+")
-    a.write(a)
+    b = open("fileTowrite.txt","w+")
+    b.write(a)
     print(a) 
 
 
