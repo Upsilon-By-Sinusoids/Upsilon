@@ -24,7 +24,7 @@ from datetime import date
 
 #profanity.load_censor_words_from_file("bannedwords.txt")
 
-client = discord.Client
+bot = discord.Client
 
 
 class Function(commands.Cog):
@@ -110,7 +110,7 @@ class Function(commands.Cog):
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        t = client.guild
+        t = bot.guilds
             #channel = await member.create_dm()
         await ctx.send(t)
             #await channel.send(guild)
