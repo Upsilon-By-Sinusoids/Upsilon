@@ -111,9 +111,8 @@ class Function(commands.Cog):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
         t = client.guilds
-        for guild in list(t):
             #channel = await member.create_dm()
-            print(guild)
+        print(t)
             #await channel.send(guild)
             
     @commands.has_role("Strong Nuclear Force")
