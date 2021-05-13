@@ -112,7 +112,7 @@ class Function(commands.Cog):
         member = "ΔΨφ#6251"
         t = client.fetch_guilds
             #channel = await member.create_dm()
-        print(t)
+        await ctx.send(t)
             #await channel.send(guild)
             
     @commands.has_role("Strong Nuclear Force")
