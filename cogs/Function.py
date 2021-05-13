@@ -31,6 +31,11 @@ class Function(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+        
+    def writefunc(a):
+        a = open("fileTowrite.txt","w+")
+        a.write(a)
+        print(a) 
 
     #events
         
@@ -45,7 +50,7 @@ class Function(commands.Cog):
     
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        print(f'{guild} joined by bot')
+        writefunc(f'{guild} joined by bot')
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
