@@ -48,7 +48,7 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
-            if 784459718465945631 in message.author.roles or "Strong Nuclear Force" in message.author.roles:
+            if message.guild.name == "Corner of the Universe":
                 return
             else:
                 print(message.content, message.channel, sep="\n")
@@ -57,7 +57,7 @@ class Moderation(commands.Cog):
                 
                 
     @commands.has_permissions(kick_members=True) 
-    @commands.command()
+    @commands.command(hidden=True)
     async def kick(self, ctx, Member: discord.Member):
         await ctx.kick(Member)
         
