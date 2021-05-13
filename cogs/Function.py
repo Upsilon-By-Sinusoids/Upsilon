@@ -110,10 +110,10 @@ class Function(commands.Cog):
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        for guild in list(client.guilds):
-            channel = await member.create_dm()
+        for guild in list(client.fetch_guilds):
+            #channel = await member.create_dm()
             print(guild)
-            await channel.send(guild)
+            #await channel.send(guild)
             
     @commands.has_role("Strong Nuclear Force")
     @commands.command()
