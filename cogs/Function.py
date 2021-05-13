@@ -110,7 +110,7 @@ class Function(commands.Cog):
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        t = client.guilds()
+        t = client.fetch_guilds
             #channel = await member.create_dm()
         print(t)
             #await channel.send(guild)
