@@ -1,0 +1,9 @@
+log all bot commands run in a file
+command for list of servers bot is in
+chess
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     making commmands optional for servers     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+making load and unload for owner only and hiding them using (hidden=True)
+get profile of user
+fix birthday wisher
+fix kick command
+add mute, unmute, ban, unban, invite link to server in which command is enetered, send gifs as reactions.
