@@ -26,16 +26,17 @@ from datetime import date
 
 bot = discord.Client
 
+def writefunc(a):
+    a = open("fileTowrite.txt","w+")
+    a.write(a)
+    print(a) 
+
 
 class Function(commands.Cog):
 
     def __init__(self, client):
         self.client = client
         
-    def writefunc(a):
-        a = open("fileTowrite.txt","w+")
-        a.write(a)
-        print(a) 
 
     #events
         
