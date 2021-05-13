@@ -59,14 +59,14 @@ async def on_member_join(cxt, ajrkgbmember): #member only remove everything else
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
-@commands.has_permissions(manage_guild=True)
-@client.command()
+@commands.has_role("Strong Nuclear Force")
+@client.command(hidden=True)
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     await ctx.send(f'successfully loaded {extension}')
 
-@commands.has_permissions(manage_guild=True)
-@client.command()
+@commands.has_role("Strong Nuclear Force")
+@client.command(hidden=True)
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     await ctx.send(f'successfully unloaded {extension}')
