@@ -106,11 +106,11 @@ class Function(commands.Cog):
         await ctx.channel.purge(limit=amount+1)
         
     @commands.has_role("Strong Nuclear Force")
-    @commands.command()
+    @commands.command(hidden=True)
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        t = client.fetch_guilds
+        t = client.guild
             #channel = await member.create_dm()
         await ctx.send(t)
             #await channel.send(guild)
