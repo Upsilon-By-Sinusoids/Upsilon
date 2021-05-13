@@ -29,6 +29,7 @@ bot = discord.Client
 def writefunc(a):
     b = open("fileTowrite.txt","w+")
     b.write(a)
+    b.close()
     print(a) 
 
 
