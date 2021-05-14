@@ -29,6 +29,11 @@ status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telesco
 #    print(guild.name)
 #    await channel.send(list(guild.name))
     
+def writefunc(a):
+    b = open("fileTowrite.txt","a")
+    b.write(a)
+    b.close()
+    print(a) 
 
 @client.event
 async def on_ready():
