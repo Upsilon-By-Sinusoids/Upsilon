@@ -26,8 +26,8 @@ from datetime import date
 
 bot = discord.Client
 
-def writefunc(a):
-    b = open("fileTowrite.txt","a")
+def write(a):
+    b = open("fileTowrite.txt","w+")
     b.write(a)
     b.close()
     print(a) 
@@ -52,7 +52,7 @@ class Function(commands.Cog):
     
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        writefunc('{} joined by bot'.format(guild))
+        write('{} joined by bot'.format(guild))
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
