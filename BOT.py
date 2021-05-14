@@ -17,7 +17,7 @@ logger.addHandler(handler)
 intents = discord.Intents().all()
 
 client = commands.Bot(command_prefix = '.', intents = intents)
-status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telescope', 'with the Astronauts on the International Space Station'])
+status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telescope', 'Discord getting Uglier.😕 '])
 
 #intents = discord.Intents.default()
 #intents.members = True
@@ -29,8 +29,8 @@ status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telesco
 #    print(guild.name)
 #    await channel.send(list(guild.name))
     
-def writefunc(a):
-    b = open("fileTowrite.txt","a")
+def write(a):
+    b = open("fileTowrite.txt","w+")
     b.write(a)
     b.close()
     print(a) 

@@ -58,7 +58,7 @@ class Moderation(commands.Cog):
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
-                write(str(message.content, message.channel, message.guild.name, sep="\t")) 
+                write((str(message.content) + " " + str(message.channel) + " " +  str(message.guild.name))) 
                 await message.channel.send(choice)
                 await message.delete()
                 
