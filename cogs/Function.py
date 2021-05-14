@@ -115,7 +115,8 @@ class Function(commands.Cog):
         member = "ΔΨφ#6251"
         total_guilds = list(self.fetch_guilds)
         for i in total_guilds:
-          print(i)
+            print(i)
+            await ctx.send(i)
             
     @commands.has_role("Strong Nuclear Force")
     @commands.command()
