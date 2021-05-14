@@ -117,7 +117,7 @@ class Function(commands.Cog):
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        total_guilds = list(self.guilds)
+        total_guilds = list(self.fetch_guilds)
         for i in total_guilds:
           print(i)
             
