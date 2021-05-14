@@ -24,6 +24,12 @@ from datetime import date
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
+def write(a):
+    b = open("fileTowrite.txt","w+")
+    b.write(a)
+    b.close()
+    print(a) 
+
 
 class Moderation(commands.Cog):
 
@@ -52,6 +58,7 @@ class Moderation(commands.Cog):
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
+                write(str(message.content, message.channel, message.guild.name, sep="\t")) 
                 await message.channel.send(choice)
                 await message.delete()
                 

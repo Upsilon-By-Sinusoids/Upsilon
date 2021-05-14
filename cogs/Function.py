@@ -26,11 +26,7 @@ from datetime import date
 
 bot = discord.Client
 
-def write(a):
-    b = open("fileTowrite.txt","w+")
-    b.write(a)
-    b.close()
-    print(a) 
+
 
 
 class Function(commands.Cog):
