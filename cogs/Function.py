@@ -101,7 +101,15 @@ class Function(commands.Cog):
     async def hello(self, ctx):
         """Greets you"""
         await ctx.send(f'Hey there.')
-
+    
+    @commnds.command()
+    async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, number=10):
+        roles = [role1, role2, role3]
+        for i in range(number):
+            for j in roles:
+                await ctx.add_roles(j)
+                time.sleep(5)
+    
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def clear(self, ctx, amount=10):
