@@ -103,7 +103,7 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
     
     @commands.command()
-    async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, number=10):
+    async def coloured(self, ctx, member : discord.Member=None, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, number=10):
         roles = [role1, role2, role3]
         for i in range(number):
             for j in roles:
