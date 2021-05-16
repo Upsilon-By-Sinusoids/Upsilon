@@ -24,6 +24,8 @@ from datetime import date
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
+ls = ["Corner of the Universe", "Revolutionaries"]
+
 def write(a):
     b = open("fileTowrite.txt","w+")
     b.write(a)
@@ -54,7 +56,7 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         if profanity.contains_profanity(message.content):
-            if message.guild.name == "Corner of the Universe":
+            if message.guild.name in ls:
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
