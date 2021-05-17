@@ -104,16 +104,20 @@ class Function(commands.Cog):
     
     @commands.command(hidden=True)
     async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
+        """Idea for this command was given by orb_server"""
         roles = [role1, role2, role3]
         for i in range(number):
             for j in roles:
                 await user.add_roles(j)
-                time.sleep(5)
+                time.sleep(1)
+                await user.remove_roles(j)
+                time.aleep(2)
     
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def clear(self, ctx, amount=10):
         """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
+        print(f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}")
         await ctx.channel.purge(limit=amount+1)
         
     @commands.has_role("Strong Nuclear Force")
@@ -127,7 +131,7 @@ class Function(commands.Cog):
             await ctx.send(i)
             
     @commands.has_role("Strong Nuclear Force")
-    @commands.command()
+    @commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
         await ctx.send(fetch_user_profile(user.id))
         
@@ -137,12 +141,14 @@ class Function(commands.Cog):
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=4294442871&scope=bot')
         time.sleep(0.2)
         await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
+        print(f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}")
         
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def nuke(self, ctx, channel: discord.TextChannel):
         try:
+            print(f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}")
             await channel.delete()
             await ctx.send(f'A nuke has been dropped on #{channel}')
         except:
