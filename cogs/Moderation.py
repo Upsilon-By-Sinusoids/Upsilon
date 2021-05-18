@@ -67,8 +67,8 @@ class Moderation(commands.Cog):
                 
     @commands.has_permissions(kick_members=True) 
     @commands.command(hidden=True)
-    async def kick(self, ctx, Member: discord.Member):
-        await ctx.kick(Member)
+    async def kick(self, ctx, member: discord.Member):
+        await member.kick()
         
         
 def setup(client):
