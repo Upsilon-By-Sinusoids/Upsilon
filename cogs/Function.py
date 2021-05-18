@@ -48,7 +48,7 @@ class Function(commands.Cog):
     
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        write('{} joined by bot'.format(guild))
+        print('{} joined by bot'.format(guild))
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
@@ -111,7 +111,7 @@ class Function(commands.Cog):
                 await user.add_roles(j)
                 time.sleep(1)
                 await user.remove_roles(j)
-                time.aleep(2)
+                time.sleep(2)
     
     @commands.command()
     @commands.has_permissions(manage_guild=True)
