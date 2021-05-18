@@ -102,7 +102,7 @@ class Function(commands.Cog):
         """Greets you"""
         await ctx.send(f'Hey there.')
     
-    @commands.command(hidden=True)
+    @commands.command()
     async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
         """Idea for this command was given by orb_server"""
         roles = [role1, role2, role3]
