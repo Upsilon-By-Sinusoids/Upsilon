@@ -53,6 +53,10 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
         print(f'bot has left {guild}')
+        
+    @commands.Cog.listener()
+    async def on_message_delete(self, message):
+        print(f" \"{message}\" was sent by {message.author} and later deleted in the server {message.guild}")
   
 
     @commands.Cog.listener()
