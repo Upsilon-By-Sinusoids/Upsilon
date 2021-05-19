@@ -107,7 +107,7 @@ class Function(commands.Cog):
         """Use this to make your name have 3 colors defined by the roles that you ping. 
         (Idea for this command was given by orb_server)"""
         roles = [role1, role2, role3]
-        user  user or ctx.author
+        user = user or ctx.author
         for i in range(number):
             for j in roles:
                 await user.add_roles(j)
