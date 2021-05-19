@@ -56,7 +56,7 @@ class Function(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message_delete(self, message):
-        print(f" \"{message}\" was sent by {message.author} and later deleted in the server {message.guild}")
+        print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
   
 
     @commands.Cog.listener()
