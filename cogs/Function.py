@@ -104,14 +104,24 @@ class Function(commands.Cog):
     
     @commands.command()
     async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
-        """Idea for this command was given by orb_server"""
+        """Use this to make your name have 3 colors defined by the roles that you ping. 
+        (Idea for this command was given by orb_server)"""
         roles = [role1, role2, role3]
+        user  user or ctx.author
         for i in range(number):
             for j in roles:
                 await user.add_roles(j)
                 time.sleep(1)
                 await user.remove_roles(j)
                 time.sleep(2)
+                
+    @commands.command()
+    async def avatar(self, ctx, user : discord.Member = None):
+        user = user or ctx.author
+        pfp = user.avatar_url
+        embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0xecce8b)
+        embed.set_image(url=(pfp))
+        await ctx.send(embed=embed)
     
     @commands.command()
     @commands.has_permissions(manage_guild=True)
