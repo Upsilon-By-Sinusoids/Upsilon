@@ -119,7 +119,7 @@ class Function(commands.Cog):
     async def avatar(self, ctx, user : discord.Member = None):
         user = user or ctx.author
         pfp = user.avatar_url
-        embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0xecce8b)
+        embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0x270de7)
         embed.set_image(url=(pfp))
         await ctx.send(embed=embed)
     
