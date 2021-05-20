@@ -38,6 +38,7 @@ class Fun(commands.Cog):
         lst = ["rock", "paper", "scissors"]
         mlst = ["📄","✂","🥌"]
         if message.content.lower() in lst:
+            return
             #await ctx.send(random.choice(mlst))
         
     @commands.command(hidden=True)
