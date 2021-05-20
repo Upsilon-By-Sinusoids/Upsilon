@@ -163,8 +163,8 @@ class Function(commands.Cog):
     async def nuke(self, ctx, channel: discord.TextChannel):
         try:
             print(f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}")
-            await channel.delete()
             await ctx.send(f'A nuke has been dropped on #{channel}')
+            await channel.delete()
         except:
             await ctx.send(f'Why were u trying to delete a channel 🤨')
             
