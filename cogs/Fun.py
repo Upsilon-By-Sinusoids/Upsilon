@@ -30,7 +30,7 @@ class Fun(commands.Cog):
         self.client = client
         
     @commands.Cog.listener()
-    async def on_ready():
+    async def on_ready(self):
         print("Fun is working")
         
     @commands.Cog.listener()
