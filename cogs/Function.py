@@ -48,20 +48,20 @@ class Function(commands.Cog):
     async def on_guild_join(self, guild):
         print('{} joined by bot'.format(guild))
         message = '{} joined by bot'.format(guild)
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)    
         await channel.send(message)
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
         message = f'bot has left {guild}'
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
         
     @commands.Cog.listener()
     async def on_message_delete(self, message):
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
         message = f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}"
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
   
 
@@ -69,13 +69,13 @@ class Function(commands.Cog):
     async def on_member_join(self, member):
         #await member.send(f'hola!')
         print(f'{member} joined {member.guild}')
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(f'{member} joined {member.guild}')
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         message = f'{member} left from {member.guild}'
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
         
         
@@ -143,7 +143,7 @@ class Function(commands.Cog):
         """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
         m = f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}"
         await ctx.channel.purge(limit=amount+1)
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
     @commands.has_role("Strong Nuclear Force")
@@ -168,7 +168,7 @@ class Function(commands.Cog):
         time.sleep(0.2)
         await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
         m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
-        channel = self.client.get_channel(844996703034540073)
+        channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
 
@@ -178,7 +178,7 @@ class Function(commands.Cog):
         try:
             m = f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}"
             await ctx.send(f'A nuke has been dropped on #{channel}')
-            chn = self.client.get_channel(844996703034540073)
+            chn = self.client.get_channel(845245176888688660)
             await chn.send(m)
             await channel.delete()
         except:
