@@ -151,7 +151,7 @@ class Function(commands.Cog):
     async def servers(self, ctx):
         """This command is exclusively for the owner of Upsilon"""
         member = "ΔΨφ#6251"
-        total_guilds = list(self.fetch_guilds)
+        total_guilds = list(self.client.fetch_guilds)
         for i in total_guilds:
             print(i)
             await ctx.send(i)
@@ -159,7 +159,7 @@ class Function(commands.Cog):
     @commands.has_role("Strong Nuclear Force")
     @commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
-        await ctx.send(fetch_user_profile(user.id))
+        await ctx.send(self.client.fetch_user_profile(user))
         
     @commands.command()
     async def invite(self, ctx):
