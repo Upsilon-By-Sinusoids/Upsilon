@@ -178,8 +178,8 @@ class Function(commands.Cog):
         try:
             m = f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}"
             await ctx.send(f'A nuke has been dropped on #{channel}')
-            channel = self.client.get_channel(844996703034540073)
-            await channel.send(m)
+            chn = self.client.get_channel(844996703034540073)
+            await chn.send(m)
             await channel.delete()
         except:
             await ctx.send(f'Why were u trying to delete a channel 🤨')
