@@ -47,10 +47,15 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         print('{} joined by bot'.format(guild))
+        message = '{} joined by bot'.format(guild)
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(message)
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
-        print(f'bot has left {guild}')
+        message = f'bot has left {guild}'
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(message)
         
     @commands.Cog.listener()
     async def on_message_delete(self, message):
@@ -64,10 +69,14 @@ class Function(commands.Cog):
     async def on_member_join(self, member):
         #await member.send(f'hola!')
         print(f'{member} joined {member.guild}')
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(f'{member} joined {member.guild}')
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
-        print(f'{member} left from {member.guild}')
+        message = f'{member} left from {member.guild}'
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(message)
         
         
     def ask():
@@ -132,8 +141,10 @@ class Function(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     async def clear(self, ctx, amount=10):
         """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
-        print(f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}")
+        m = f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}"
         await ctx.channel.purge(limit=amount+1)
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(m)
         
     @commands.has_role("Strong Nuclear Force")
     @commands.command(hidden=True)
@@ -156,15 +167,19 @@ class Function(commands.Cog):
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=4294442871&scope=bot')
         time.sleep(0.2)
         await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
-        print(f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}")
+        m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(m)
         
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def nuke(self, ctx, channel: discord.TextChannel):
         try:
-            print(f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}")
+            m = f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}"
             await ctx.send(f'A nuke has been dropped on #{channel}')
+            channel = self.client.get_channel(844996703034540073)
+            await channel.send(m)
             await channel.delete()
         except:
             await ctx.send(f'Why were u trying to delete a channel 🤨')
