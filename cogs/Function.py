@@ -27,7 +27,7 @@ from datetime import date
 bot = discord.Client
 
 async def log(message):
-    channel = client.get_channel(844996703034540073)
+    channel = bot.get_channel(844996703034540073)
     await channel.send(message)
 
 
