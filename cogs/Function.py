@@ -26,10 +26,6 @@ from datetime import date
 
 bot = discord.Client
 
-async def log(message):
-    channel = bot.get_channel(844996703034540073)
-    await channel.send(message)
-
 
 class Function(commands.Cog):
 
@@ -60,7 +56,8 @@ class Function(commands.Cog):
     async def on_message_delete(self, message):
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
         message = f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}"
-        await log(message)
+        channel = self.client.get_channel(844996703034540073)
+        await channel.send(message)
   
 
     @commands.Cog.listener()
