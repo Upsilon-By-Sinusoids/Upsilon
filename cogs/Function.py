@@ -179,7 +179,7 @@ class Function(commands.Cog):
     @commands.command()
     async def invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
-        await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=4294442871&scope=bot')
+        await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
         time.sleep(0.2)
         await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
         m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
