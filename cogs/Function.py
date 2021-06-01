@@ -88,10 +88,11 @@ class Function(commands.Cog):
             embed=discord.Embed(title=f"{user} got bored of life and decided to walk out the window for a change", description='', color=0xe74c3c)
             embed.set_image(url=("https://tenor.com/MTjK.gif"))
             await ctx.send(embed=embed)
-        url = random.choice(kill)
-        embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
-        embed.set_image(url=(url))
-        await ctx.send(embed=embed)
+        else:
+            url = random.choice(kill)
+            embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
+            embed.set_image(url=(url))
+            await ctx.send(embed=embed)
         
         
     @commands.has_role("Strong Nuclear Force")
