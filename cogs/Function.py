@@ -26,7 +26,7 @@ from datetime import date
 
 bot = discord.Client
 
-kill = ["https://img.cinemablend.com/filter:scale/quill/c/d/2/8/8/a/cd288aec327829a7589fb0d06cf3474c35352782.gif?mw=600", "https://gfycat.com/enchantingboldcuttlefish"]
+kill = ["https://img.cinemablend.com/filter:scale/quill/c/d/2/8/8/a/cd288aec327829a7589fb0d06cf3474c35352782.gif?mw=600", "https://thumbs.gfycat.com/EnchantingBoldCuttlefish-mobile.mp4"]
 
 
 class Function(commands.Cog):
