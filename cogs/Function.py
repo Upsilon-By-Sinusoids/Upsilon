@@ -26,6 +26,8 @@ from datetime import date
 
 bot = discord.Client
 
+kill = ["https://img.cinemablend.com/filter:scale/quill/c/d/2/8/8/a/cd288aec327829a7589fb0d06cf3474c35352782.gif?mw=600", "https://gfycat.com/enchantingboldcuttlefish"]
+
 
 class Function(commands.Cog):
 
@@ -80,6 +82,12 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
         
+    @commands.command()
+    async def kill(self, ctx, user : discord.Memeber):
+        url = random.choice(kill)
+        embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0x270de7)
+        embed.set_image(url=(url))
+        await ctx.send(embed=embed)
         
         
     @commands.has_role("Strong Nuclear Force")
