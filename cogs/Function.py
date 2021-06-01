@@ -83,7 +83,7 @@ class Function(commands.Cog):
         await channel.send(message)
         
     @commands.command()
-    async def kill(self, ctx, user : discord.Memeber):
+    async def kill(self, ctx, user : discord.Member):
         url = random.choice(kill)
         embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0x270de7)
         embed.set_image(url=(url))
