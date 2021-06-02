@@ -33,22 +33,6 @@ class Fun(commands.Cog):
     async def on_ready(self):
         print("Fun is working")
         
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        lst = ["rock", "paper", "scissors"]
-        mlst = ["📄","✂","🥌"]
-        if message.content.lower() in lst:
-            return
-            #await ctx.send(random.choice(mlst))
-        
-    @commands.command(hidden=True)
-    async def rockpaperscissor(self, ctx):
-        await ctx.send(f"The game of rock, paper, scissors has started")
-        await ctx.send(f"Let's see if you can beat me 🤨")
-        rsp = await on_message(response.content)
-        
-        
-    
     
     
     
