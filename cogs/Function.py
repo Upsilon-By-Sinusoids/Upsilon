@@ -89,7 +89,7 @@ class Function(commands.Cog):
             #embed.set_image(url=("https://tenor.com/MTjK.gif"))
             await ctx.send(embed=embed)
             await asyncio.sleep(1.5)
-            await ctx.send(discord.Embed(title="Go on then, what are you waiting for?",description="",color=0xe74c3c))
+            await ctx.send(embed=discord.Embed(title="Go on then, what are you waiting for?",description="",color=0xe74c3c))
         else:
             url = random.choice(kill)
             embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
