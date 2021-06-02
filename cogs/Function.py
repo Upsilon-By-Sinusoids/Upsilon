@@ -177,7 +177,7 @@ class Function(commands.Cog):
     @commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
         user = user or ctx.author
-        await ctx.send(await self.client.user_profile(user))
+        await ctx.send(self.client.fetch_user_profile(user))
         
     @commands.command()
     async def invite(self, ctx):
