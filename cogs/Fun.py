@@ -24,7 +24,7 @@ from datetime import date
 
 
 
-class Fun(commands.Cog):
+class Miscellaneous(commands.Cog):
     
     def __init__(self, client):
         self.client = client
@@ -32,6 +32,8 @@ class Fun(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("Fun is working")
+        
+    
         
     
     
@@ -44,4 +46,4 @@ class Fun(commands.Cog):
     
     
 def setup(client):
-    client.add_cog(Fun(client))
+    client.add_cog(Miscellaneous(client))
