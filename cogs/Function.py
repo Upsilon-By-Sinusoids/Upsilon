@@ -85,9 +85,11 @@ class Function(commands.Cog):
     @commands.command()
     async def kill(self, ctx, user : discord.Member):
         if user == ctx.author:
-            embed=discord.Embed(title=f"{user} got bored of life and decided to walk out the window for a change", description='', color=0xe74c3c)
-            embed.set_image(url=("https://tenor.com/MTjK.gif"))
+            embed=discord.Embed(title=f"{user}, I know it seems tempting to take the easy way out, my advice is that you listen to some good ol' songs by typing .play [song name].", description='', color=0xe74c3c)
+            #embed.set_image(url=("https://tenor.com/MTjK.gif"))
             await ctx.send(embed=embed)
+            await asyncio.sleep(0.5)
+            await ctx.send("Go on then, what are you waiting for?")
         else:
             url = random.choice(kill)
             embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
