@@ -173,8 +173,8 @@ class Function(commands.Cog):
         await ctx.send(self.client.guilds)
         await ctx.send(f"{len(r)} servers")
             
-    @commands.has_role("Strong Nuclear Force")
-    @commands.command(hidden=True)
+    #@commands.has_role("Strong Nuclear Force")
+    #@commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
         user = user or ctx.author
         embed=discord.Embed(title=f"{user.display_name}",discription="",color=)
