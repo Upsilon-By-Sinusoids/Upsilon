@@ -197,7 +197,7 @@ class Function(commands.Cog):
     async def upvote(self, ctx):
         """If you like this bot dont forget to upvote it"""
         embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
-        embed.set_thumbnail(url="https://tenor.com/view/doit-gif-4445202")
+        embed.set_image(url=("https://tenor.com/sOyY.gif"))
         await ctx.send(embed=embed)
 
     @commands.command()
