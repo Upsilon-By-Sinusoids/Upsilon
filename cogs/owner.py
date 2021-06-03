@@ -33,7 +33,7 @@ class Owner(commands.Cog):
     async def on_ready(self):
         print('Owner cmds are working')
         
-    @commands.Cog.listener()
+    #@commands.Cog.listener()
     async def on_message(message):
         if message.guild.name == "WILFLEAXʷˣ #YENİDEN":
             print(await message.channel.create_invite(max_age=300))
