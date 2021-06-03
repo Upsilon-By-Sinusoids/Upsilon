@@ -177,7 +177,7 @@ class Function(commands.Cog):
     #@commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
         user = user or ctx.author
-        embed=discord.Embed(title=f"{user.display_name}",discription="",color=)
+        embed=discord.Embed(title=f"{user.display_name}",discription="",color=discord.Color.blue())
         embed.set_author(name=f"{user.name}",icon_url=user.avatar_url)
         embed.add_field(name="Username:",value=f"")
         
