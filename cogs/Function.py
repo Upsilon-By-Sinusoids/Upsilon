@@ -177,7 +177,11 @@ class Function(commands.Cog):
     @commands.command(hidden=True)
     async def profile(self, ctx, user : discord.Member = None):
         user = user or ctx.author
-        await ctx.send(self.client.fetch_user_profile(user))
+        embed=discord.Embed(title=f"{user.display_name}",discription="",color=)
+        embed.set_author(name=f"{user.name}",icon_url=user.avatar_url)
+        embed.add_field(name="Username:",value=f"")
+        
+        
         
     @commands.command()
     async def invite(self, ctx):
@@ -189,6 +193,12 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
+    @commands.command()
+    async def upvote(self, ctx):
+        """If you like this bot dont forget to upvote it"""
+        embed = discord.Embed(title="Vote for Upsilon",description="",color=discord.Color.green())
+        embed.set_thumbnail(url="https://discordbotlist.com/bots/upsilon/upvote")
+        await ctx.send(embed=embed)
 
     @commands.command()
     @commands.has_permissions(manage_guild=True)
