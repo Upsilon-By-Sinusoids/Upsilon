@@ -22,10 +22,6 @@ import ctypes.util
 from better_profanity import profanity
 from datetime import date 
 
-#profanity.load_censor_words_from_file("bannedwords.txt")
-
-bot = discord.Client
-
 kill = ["https://img.cinemablend.com/filter:scale/quill/c/d/2/8/8/a/cd288aec327829a7589fb0d06cf3474c35352782.gif?mw=600", "https://cdn.discordapp.com/attachments/784494481159618560/849313765703024670/ezgif.com-gif-maker.gif"]
 
 
@@ -153,15 +149,6 @@ class Function(commands.Cog):
         embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0x270de7)
         embed.set_image(url=(pfp))
         await ctx.send(embed=embed)
-    
-    @commands.command()
-    @commands.has_permissions(manage_guild=True)
-    async def clear(self, ctx, amount=10):
-        """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
-        m = f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}"
-        await ctx.channel.purge(limit=amount+1)
-        channel = self.client.get_channel(845245176888688660)
-        await channel.send(m)
         
     @commands.has_role("Strong Nuclear Force")
     @commands.command(hidden=True)
