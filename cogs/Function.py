@@ -70,13 +70,27 @@ class Function(commands.Cog):
         #await member.send(f'hola!')
         print(f'{member} joined {member.guild}')
         channel = self.client.get_channel(845245176888688660)
-        await channel.send(f'{member} joined {member.guild}')
+        #await channel.send(f'{member} joined {member.guild}')
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         message = f'{member} left from {member.guild}'
         channel = self.client.get_channel(845245176888688660)
-        await channel.send(message)
+        #await channel.send(message)
+        
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, message):
+        await message.add_reaction(reaction)
+        
+    @commands.Cog.listener()
+    async def on_member_ban(self, guild, member):
+        chan = self.client.get_channel(845245176888688660)
+        await chan.send(f"{member} was banned from {guild}")
+        
+    @commands.Cog.listener()
+    async def on_member_unban(self, guild, member):
+        channel = self.client.get_channel(845245176888688660)
+        await channel.send(f"{member} was unbanned from {guild}")
         
         
     @commands.has_role("Strong Nuclear Force")
