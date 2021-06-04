@@ -80,6 +80,28 @@ class Moderation(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def nuke(self, ctx, channel: discord.TextChannel):
+        try:
+            m = f"{channel} channel deleted by {ctx.message.author.name} in {ctx.message.guild}"
+            await ctx.send(f'A nuke has been dropped on #{channel}')
+            chn = self.client.get_channel(845245176888688660)
+            await chn.send(m)
+            await channel.delete()
+        except:
+            await ctx.send(f'Why were u trying to delete a channel 🤨')
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 def setup(client):
     client.add_cog(Moderation(client))
