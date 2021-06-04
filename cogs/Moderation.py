@@ -68,7 +68,9 @@ class Moderation(commands.Cog):
     @commands.has_permissions(kick_members=True) 
     @commands.command(hidden=False)
     async def kick(self, ctx, member: discord.Member):
+        channel = self.client.get_channel(845245176888688660)
         await member.kick()
+        await channel.send(f"{member} was kicked from {ctx.guild} by {ctx.author.name}")
         
         
     @commands.command()
