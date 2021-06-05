@@ -55,12 +55,13 @@ class Moderation(commands.Cog):
 
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
+        cha = self.client.get_channel(845245176888688660)
         if profanity.contains_profanity(message.content):
             if message.guild.name in ls:
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
-                write((str(message.content) + " " + str(message.channel) + " " +  str(message.guild.name))) 
+                await cha.send(message.content, message.channel, message.guild.name, sep="\t")
                 await message.channel.send(choice)
                 await message.delete()
                 
