@@ -79,9 +79,9 @@ class Function(commands.Cog):
         #await channel.send(message)
         
     @commands.Cog.listener()
-    async def on_reaction_add(self, reaction, message):
+    async def on_reaction_add(self, reaction, member):
         print("reaction added")
-        await message.add_reaction(reaction)
+        await member.message.add_reaction(reaction)
         
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
