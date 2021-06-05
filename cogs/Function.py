@@ -80,6 +80,7 @@ class Function(commands.Cog):
         
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, message):
+        print("reaction added")
         await message.add_reaction(reaction)
         
     @commands.Cog.listener()
