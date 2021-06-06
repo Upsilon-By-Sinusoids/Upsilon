@@ -82,7 +82,8 @@ class Function(commands.Cog):
     async def on_message(self, message):
         react = message.reactions
         print(react)
-        if len(react) != 0:
+        print(message.reactions)
+        if len(message.reactions) > 0:
             for i in react:
                 await message.add_reaction(i)
                 print("reaction added")
