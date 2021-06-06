@@ -81,7 +81,8 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         react = message.reactions
-        if react != None:
+        print(react)
+        if len(react) != 0:
             for i in react:
                 await message.add_reaction(i)
                 print("reaction added")
