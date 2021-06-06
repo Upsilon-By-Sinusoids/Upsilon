@@ -60,7 +60,7 @@ class Function(commands.Cog):
         if message.channel.id == 845245176888688660:
             return
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
-        message = f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}"
+        message = f" \"{message.content}\" was sent by {message.author} and later deleted in the channel {message.channel} of the server {message.guild}"
         channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
   
