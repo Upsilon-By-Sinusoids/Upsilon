@@ -79,9 +79,12 @@ class Function(commands.Cog):
         #await channel.send(message)
         
     @commands.Cog.listener()
-    async def on_reaction_add(self, reaction, member):
-        print("reaction added")
-        await self.client.add_reaction(reaction)
+    async def on_message(self, message):
+        react = message.reactions
+        if react != None:
+            for i in react:
+                await message.add_reaction(i)
+                print("reaction added")
         
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
