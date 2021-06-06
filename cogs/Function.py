@@ -81,7 +81,7 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, member):
         print("reaction added")
-        await Reaction.message.add_reaction(reaction)
+        await self.client.Reaction.message.add_reaction(reaction)
         
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
