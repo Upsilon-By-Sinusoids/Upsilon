@@ -83,10 +83,7 @@ class Function(commands.Cog):
         react = message.reactions
         print(react)
         print(message.reactions)
-        if len(message.reactions) > 0:
-            for i in react:
-                await message.add_reaction(i)
-                print("reaction added")
+        await message.add_reaction(message.reactions)
         
     @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
