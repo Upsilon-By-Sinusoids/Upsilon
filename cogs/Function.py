@@ -66,7 +66,7 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(message)
         
-        if message.author == "rohanvkumarv#6837":
+        if message.author.name == "rohanvkumarv#6837":
             embed = discord.Embed(title="This message was sent by rohanvkumarv#6837 and deleted", desccription=f"{message.content}",color=discord.Color.blurple())
             ctx.send(embed=embed)
   
