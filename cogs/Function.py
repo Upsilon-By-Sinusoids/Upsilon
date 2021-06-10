@@ -57,6 +57,8 @@ class Function(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message_delete(self, message):
+        if message.author.bot == True:
+            return
         if message.channel.id == 845245176888688660:
             return
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
