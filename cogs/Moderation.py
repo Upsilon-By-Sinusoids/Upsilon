@@ -99,7 +99,7 @@ class Moderation(commands.Cog):
         
         
     @commands.command(aliases=["takedown","exile"])
-    async def arrest(self, ctx, member):
+    async def arrest(self, ctx, member : discord.Member):
         for i in range(member.roles):
             i+=1
             await i.delete
