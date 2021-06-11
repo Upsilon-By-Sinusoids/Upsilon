@@ -534,18 +534,16 @@ class Music(commands.Cog):
                 await ctx.send('Enqueued {}'.format(str(source)))
     
     @commands.command()
-    async def download(self, ctx, link: str): 
+    async def download(self, ctx, song_name: str): 
         try :
-            ydl_opts = {}
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([link])
+            system("youtube-dl:" +  song_name)
             for file in os.listdir("./"):
                 if file.endswith(".mp4"):
                     name = file
                     print(f"Renamed File: {file}\n")
                     os.rename(file, "song.mp4")
 
-                    await ctx.send(file=discord.File(r'song.mp3'))
+                    await ctx.send(file=discord.File(r'song.mp4'))
 
                     ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp4"))
                     ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
