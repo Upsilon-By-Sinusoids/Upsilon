@@ -535,11 +535,12 @@ class Music(commands.Cog):
             system("youtube-dl "+ "ytsearch:" +  f"{song_name}")
             for file in os.listdir("./"):
                 if file.endswith(".mp4"):
+                    await ctx.send(file=discord.File(file))
                     name = file
                     print(f"Renamed File: {file}\n")
-                    os.rename(file, "song.mp4")
+                    os.rename(file, "song.mp3")
 
-                    await ctx.send(file=discord.File(r'song.mp4'))
+                    await ctx.send(file=discord.File(r'song.mp3'))
         except: 
             pass 
          
