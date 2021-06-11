@@ -520,10 +520,6 @@ class Music(commands.Cog):
                             os.rename(file, "song.mp3")
                             
                             await ctx.send(file=discord.File(r'song.mp3'))
-                        
-                            ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp3"))
-                            ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
-                            ctx.voice_client.channel.source.volume = 0.07
                
                 except YTDLError as e:
                     await ctx.send('An error occurred while processing this request: {}'.format(str(e)))
@@ -544,10 +540,6 @@ class Music(commands.Cog):
                     os.rename(file, "song.mp4")
 
                     await ctx.send(file=discord.File(r'song.mp4'))
-
-                    ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp4"))
-                    ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
-                    ctx.voice_client.channel.source.volume = 0.07
         except: 
             pass 
          
