@@ -535,7 +535,7 @@ class Music(commands.Cog):
     
     @commands.command()
     async def download(self, ctx, search: str):
-        url='[Click]({0.source.url})'.format(self)) 
+        url='[Click]({0.source.url})'.format(self) 
         try :
             ydl_opts = {}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
