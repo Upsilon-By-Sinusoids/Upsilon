@@ -50,30 +50,7 @@ class Miscellaneous(commands.Cog):
             await ctx.send(embed=embed)
         
     
-    @commands.command()
-    async def download(self, ctx, song):
-        try:
-            #link of song from song name
-            ydl_opts = {}
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([link])
-            #c_path = os.path.dirname(os.path.realpath(__file__))
-            #system("spotdl " +  search +" --ignore-ffmpeg-version" )
-            for file in os.listdir("./"):
-                if file.endswith(".mp4"):
-                    name = file
-                    print(f"Renamed File: {file}\n")
-                    os.rename(file, "song.mp4")
-
-                    await ctx.send(file=discord.File(r'song.mp3'))
-
-                    ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp4"))
-                    ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
-                    ctx.voice_client.channel.source.volume = 0.07
-               
-        except:
-            pass
-    
+   
     
     
     
