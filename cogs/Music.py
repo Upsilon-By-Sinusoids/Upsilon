@@ -532,7 +532,7 @@ class Music(commands.Cog):
     @commands.command()
     async def download(self, ctx, song_name: str): 
         try :
-            system("youtube-dl:" +  song_name)
+            system("youtube-dl "+ "ytsearch:" +  f"{song_name}")
             for file in os.listdir("./"):
                 if file.endswith(".mp4"):
                     name = file
