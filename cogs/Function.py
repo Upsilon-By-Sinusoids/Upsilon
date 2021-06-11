@@ -85,13 +85,6 @@ class Function(commands.Cog):
         #await channel.send(message)
         
     @commands.Cog.listener()
-    async def on_message(self, message):
-        react = message.reactions
-        print(react)
-        print(message.reactions)
-        await message.add_reaction(message.reactions)
-        
-    @commands.Cog.listener()
     async def on_member_ban(self, guild, member):
         chan = self.client.get_channel(845245176888688660)
         await chan.send(f"{member} was banned from {guild}")
