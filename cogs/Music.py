@@ -534,8 +534,7 @@ class Music(commands.Cog):
                 await ctx.send('Enqueued {}'.format(str(source)))
     
     @commands.command()
-    async def download(self, ctx, search: str):
-        url='[Click]({0.source.url})'.format(self) 
+    async def download(self, ctx, link: str): 
         try :
             ydl_opts = {}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
