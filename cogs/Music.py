@@ -532,7 +532,28 @@ class Music(commands.Cog):
 
                 await ctx.voice_state.songs.put(song)
                 await ctx.send('Enqueued {}'.format(str(source)))
+    
+    @commands.command()
+    async def download(self, ctx, search: str):
+        url='[Click]({0.source.url})'.format(self)) 
+        try :
+            ydl_opts = {}
+            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                ydl.download([link])
+            for file in os.listdir("./"):
+                if file.endswith(".mp4"):
+                    name = file
+                    print(f"Renamed File: {file}\n")
+                    os.rename(file, "song.mp4")
 
+                    await ctx.send(file=discord.File(r'song.mp3'))
+
+                    ctx.voice_client.channel.play(discord.FFmpegPCMAudio("song.mp4"))
+                    ctx.voice_client.channel.source = discord.PCMVolumeTransformer(ctx.voice_client.channel.source)
+                    ctx.voice_client.channel.source.volume = 0.07
+        except: 
+            pass 
+         
     @_join.before_invoke
     @_play.before_invoke
     async def ensure_voice_state(self, ctx: commands.Context):
