@@ -539,7 +539,7 @@ class Music(commands.Cog):
                     print(f"Renamed File: {file}\n")
                     os.rename(file, "song.mp4")
 
-                    await ctx.send(file=discord.File(r'{}'.format(file)))
+                    await ctx.send(file=discord.File(r'song.mp4'))
         except: 
             pass 
          
