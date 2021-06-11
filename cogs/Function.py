@@ -57,8 +57,8 @@ class Function(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message_delete(self, message):
-        if message.author.bot == True:
-            return
+        #if message.author.bot == True:
+        #    return
         if message.channel.id == 845245176888688660:
             return
         if message.author.id == 719480945962516541:
