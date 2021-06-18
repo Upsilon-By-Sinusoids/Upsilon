@@ -24,7 +24,7 @@ from datetime import date
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
-ls = ["Corner of the Universe", "Revolutionaries"]
+ls = ["Corner of the Universe", "Particle Science's Discord"]
 
 def write(a):
     b = open("fileTowrite.txt","w+")
