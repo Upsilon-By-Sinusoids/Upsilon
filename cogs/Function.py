@@ -48,6 +48,7 @@ class Function(commands.Cog):
         message = '{} joined by bot'.format(guild)
         channel = self.client.get_channel(845245176888688660)    
         await channel.send(message)
+        await channel.send(f"{guild.create_invite(self, max_age='300')}")
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
