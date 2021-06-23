@@ -198,9 +198,10 @@ class Function(commands.Cog):
         
     @commands.command()
     async def upvote(self, ctx):
-        """If you like this bot dont forget to upvote it"""
+        """Vote for me !!!"""
         embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
-        embed.add_field(name="Vote Here!",value="https://discordbotlist.com/bots/upsilon/upvote")
+        embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
+        embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
         embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
         await ctx.send(embed=embed)
 
