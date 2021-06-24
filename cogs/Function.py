@@ -229,9 +229,7 @@ class Function(commands.Cog):
         embed.set_image(url=(f"{ctx.message.channel.guild.icon_url}"))
         await ctx.send(embed=embed)
 
-    
-    
-    
+
     
     
 #    @commands.command()
