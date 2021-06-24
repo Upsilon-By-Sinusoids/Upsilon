@@ -221,7 +221,7 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["server link", "server invite"])
+    @commands.command(name="invite link", aliases=["server link", "server invite"])
     @commands.has_permissions(create_instant_invite=True)
     async def _invite_link(self, ctx):
         """Generates an invite link to the server the bot is in."""
