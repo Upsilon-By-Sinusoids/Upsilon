@@ -166,7 +166,7 @@ class Function(commands.Cog):
         
         
         
-    @commands.command(name="bot invite", aliases=["invite bot"])
+    @commands.command(name="bot", aliases=["invite bot", "bot invite link", "bot link"])
     async def _bot(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
@@ -221,9 +221,9 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    @commands.command(name="invite link", aliases=["server link", "server invite"])
+    @commands.command(aliases=["server link", "server invite"])
     @commands.has_permissions(create_instant_invite=True)
-    async def _invite(self, ctx):
+    async def _invite_link(self, ctx):
         """Generates an invite link to the server the bot is in."""
         embed=discord.Embed(title=f"{ctx.message.channel.guild.name}", url=f'{ctx.message.channel.guild.create_invite(self, max_age="300")}', description="", color=0x270de7)
         embed.set_image(url=(f"{ctx.message.channel.guild.icon_url}"))
