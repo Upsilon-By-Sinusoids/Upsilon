@@ -166,8 +166,8 @@ class Function(commands.Cog):
         
         
         
-    @commands.command(name="bot invite")
-    async def _invite(self, ctx):
+    @commands.command(name="bot invite", aliases=["invite bot"])
+    async def _bot(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
         time.sleep(0.2)
@@ -176,8 +176,8 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
-    @commands.command()
-    async def upvote(self, ctx):
+    @commands.command(name="upvote", aliases=["vote", "vote for bot", "upvote bot"])
+    async def _upvote(self, ctx):
         """Vote for me !!!"""
         embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
         embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
@@ -223,7 +223,7 @@ class Function(commands.Cog):
 
     @commands.command(name="invite link", aliases=["server link", "server invite"])
     @commands.has_permissions(create_instant_invite=True)
-    async def _invite_link(self, ctx):
+    async def _invite(self, ctx):
         """Generates an invite link to the server the bot is in."""
         embed=discord.Embed(title=f"{ctx.message.channel.guild.name}", url=f'{ctx.message.channel.guild.create_invite(self, max_age="300")}', description="", color=0x270de7)
         embed.set_image(url=(f"{ctx.message.channel.guild.icon_url}"))
