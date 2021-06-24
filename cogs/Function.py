@@ -166,7 +166,7 @@ class Function(commands.Cog):
         
         
         
-    @commands.command(name="bot invite", aliases=["bot invite"])
+    @commands.command(name="bot invite")
     async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
