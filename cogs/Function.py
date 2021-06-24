@@ -167,7 +167,7 @@ class Function(commands.Cog):
         
         
     @commands.command(name="bot invite", aliases=["bot invite"])
-    async def _bot_invite(self, ctx):
+    async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
         time.sleep(0.2)
@@ -212,8 +212,8 @@ class Function(commands.Cog):
         embed.set_footer(text="it also has various CTFs")
         await ctx.send(embed=embed)
         
-    @commands.command()
-    async def server(self, ctx):
+    @commands.command(name="support server", aliases=["support", "support invite"])
+    async def _support(self, ctx):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
         embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
@@ -221,7 +221,7 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    @commands.command(name="invite link", aliases=["invite link"])
+    @commands.command(name="invite link", aliases=["server link", "server invite"])
     @commands.has_permissions(create_instant_invite=True)
     async def _invite_link(self, ctx):
         """Generates an invite link to the server the bot is in."""
