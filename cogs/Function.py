@@ -94,20 +94,6 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(f"{member} was unbanned from {guild}")
         
-        
-    @commands.has_role("Strong Nuclear Force")
-    @commands.command(hidden=True)
-    async def adti(self, ctx):
-        msg = (
-            "░█████╗░██████╗░██████╗░  ████████╗░█████╗░  ██╗░██████╗░██████╗██╗░░░██╗███████╗░██████╗\n"
-            "██╔══██╗██╔══██╗██╔══██╗  ╚══██╔══╝██╔══██╗  ██║██╔════╝██╔════╝██║░░░██║██╔════╝██╔════╝\n"
-            "███████║██║░░██║██║░░██║  ░░░██║░░░██║░░██║  ██║╚█████╗░╚█████╗░██║░░░██║█████╗░░╚█████╗░\n"
-            "██╔══██║██║░░██║██║░░██║  ░░░██║░░░██║░░██║  ██║░╚═══██╗░╚═══██╗██║░░░██║██╔══╝░░░╚═══██╗\n"
-            "██║░░██║██████╔╝██████╔╝  ░░░██║░░░╚█████╔╝  ██║██████╔╝██████╔╝╚██████╔╝███████╗██████╔╝\n"
-            "╚═╝░░╚═╝╚═════╝░╚═════╝░  ░░░╚═╝░░░░╚════╝░  ╚═╝╚═════╝░╚═════╝░░╚═════╝░╚══════╝╚═════╝░\n"
-        )
-        await ctx.send(f"```{msg}```")
-        
     def ask():
         list.append(tuple([a])) # make a dictionary instead of list  
         print(list)
@@ -132,12 +118,6 @@ class Function(commands.Cog):
     #    except: print('failed!')
             
         
-        
-#    @commands.Cog.listener()
-#    async def on_message_delete(message):
-#        msg = str(message.author)+ 'deleted message in '+str(message.channel)+': '+str(message.content)
-#        await ctx.channel.send(f'{msg}')
-
     #commands
 
     @commands.command()
@@ -203,25 +183,8 @@ class Function(commands.Cog):
         embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
         embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
         embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
+        embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
-
-    """@commands.command()
-    async def spam(self, ctx):
-        i = 0
-        while i<10:
-            i+=1
-            await ctx.send(f'Python for Jihad @Nitin#2929')"""
-
-    """@commands.command()
-    async def bump(self, ctx):
-        await ctx.send(f'!d bump')"""
-
-    """@commands.command()
-    async def meme(self, ctx):
-        await ctx.send(f'pls meme')
-        for j in range(20):
-            time.sleep(8)
-            await ctx.send(f'pls meme')"""
 
     @commands.command()
     async def quote(self, ctx):
@@ -258,12 +221,13 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    #@commands.command()
-    #async def linkserver(self, ctx):
-    #    embed=discord.Embed(title="A growing community of nerds.", url="https://discord.gg/CJ7epwcGtc", description="Place for nerds to find peace, balance, meaning, knowledge & ideas. Social, science, classical music, opera, classic films, comics, eyebleach, movies, fantasy, scifi  & general nerdy things. Is a SFW server.", color=0x270de7)
-    #    embed.set_author(name="Corner of the Universe", url="https://discord.gg/CJ7epwcGtc")
-    #    embed.add_field(name="https://discord.gg/CJ7epwcGtc ", value="Click on the server name to join the server and please share this invite link.", inline=False)
-    #    await ctx.send(embed=embed)
+    @commands.command(name="server invite")
+    @commands.has_permissions(create_instant_invite=True)
+    async def _server_invite(self, ctx):
+        """Generates an invite link to the server the bot is in."""
+        embed=discord.Embed(title=f"{ctx.message.channel.guild.name}", url=f"{ctx.message.channel.guild.create_invite(self, max_age="300")}", description="", color=0x270de7)
+        embed.set_image(url=(f"{ctx.message.channel.guild.icon_url}"))
+        await ctx.send(embed=embed)
 
     
     
@@ -382,6 +346,4 @@ class Function(commands.Cog):
 
 def setup(client):
     client.add_cog(Function(client))
-    #client.add_cog(Moderation(client))
-    #client.add_cog(Music(client))
     #client.add_cog(Chess(client))
