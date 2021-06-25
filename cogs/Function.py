@@ -138,12 +138,12 @@ class Function(commands.Cog):
                 await user.remove_roles(j)
                 time.sleep(2)
                 
-    @commands.command(aliases-["pfp"])
+    @commands.command(aliases=["pfp"])
     async def avatar(self, ctx, user : discord.Member = None):
         user = user or ctx.author
-        pfp = user.avatar_url
+        pp = user.avatar_url
         embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0x270de7)
-        embed.set_image(url=(pfp))
+        embed.set_image(url=(pp))
         await ctx.send(embed=embed)
         
     @commands.has_role("Strong Nuclear Force")
