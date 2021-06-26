@@ -166,8 +166,8 @@ class Function(commands.Cog):
         
         
         
-    @commands.command(name="bot invite", aliases=["bot invite link", "bot link"])
-    async def _bot(self, ctx):
+    @commands.command(name="invite", aliases=["bot invite link", "bot link"])
+    async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
         time.sleep(0.2)
@@ -212,7 +212,7 @@ class Function(commands.Cog):
         embed.set_footer(text="it also has various CTFs")
         await ctx.send(embed=embed)
         
-    @commands.command(name="support server", aliases=["support", "support invite"])
+    @commands.command(name="support", aliases=["support server", "support invite"])
     async def _support(self, ctx):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
@@ -221,9 +221,9 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
 
-    @commands.command(name="invite link", aliases=["server link", "server invite"])
+    @commands.command(name="server", aliases=["server invite", "server link"])
     @commands.has_permissions(create_instant_invite=True)
-    async def _invite(self, ctx):
+    async def _server(self, ctx):
         """Generates an invite link to the server the bot is in."""
         embed=discord.Embed(title=f"{ctx.message.channel.guild.name}", url=f'{ctx.message.channel.guild.create_invite(self, max_age="300")}', description="", color=0x270de7)
         embed.set_image(url=(f"{ctx.message.channel.guild.icon_url}"))
