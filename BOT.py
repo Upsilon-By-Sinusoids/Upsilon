@@ -84,7 +84,5 @@ for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
         
-#TOKEN = config('TOKEN')
-TOKEN = open("token.gitignore", "r")
-TOKEN.read()
+TOKEN = config('TOKEN')
 client.run(TOKEN)
