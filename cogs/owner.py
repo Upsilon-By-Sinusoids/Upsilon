@@ -35,7 +35,7 @@ class Owner(commands.Cog):
         
     #@commands.Cog.listener()
     async def on_message(message):
-        if message.guild.name == "WILFLEAXʷˣ #YENİDEN":
+        if message.guild.name == "☬ ＤＥＭＡＣＩＡ":
             print(await message.channel.create_invite(max_age=300))
     
 
