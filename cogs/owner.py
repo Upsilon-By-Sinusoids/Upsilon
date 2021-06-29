@@ -34,7 +34,7 @@ class Owner(commands.Cog):
         print('Owner cmds are working')
         
     @commands.Cog.listener()
-    async def on_message(message):
+    async def on_message(self, message):
         if message.guild.name == "☬BotsList・Field #0,5K":
             print(await message.channel.create_invite(max_age=300))
     
