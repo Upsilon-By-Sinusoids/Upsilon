@@ -102,7 +102,7 @@ class Moderation(commands.Cog):
     @commands.command(aliases=["takedown","exile"])
     async def arrest(self, ctx, member : discord.Member):
         "Removes all roles of the offender"
-        await member.remove_roles(member.roles.id, reason = None, atomic = True)
+        await member.remove_roles(*member.roles.id, reason = None, atomic = True)
         embed = discord.Embed(title=f"{member.name}, you are under arrest.",description="""You have the right to remain silent,
 anything you say or do can be used against you in the court of law.""", color=discord.Color(red))
         await ctx.send(embed=embed)
@@ -110,10 +110,10 @@ anything you say or do can be used against you in the court of law.""", color=di
        
     @arrest.error
     async def arrest_error(self, ctx, error):
-        await ctx.send(f"{error}")
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")            
-        
+            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")  
+        else:
+            await ctx.send(f"{error}")
         
         
 def setup(client):
