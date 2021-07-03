@@ -17,7 +17,7 @@ logger.addHandler(handler)
 intents = discord.Intents().all()
 
 client = commands.Bot(command_prefix = '.', intents = intents)
-status = cycle(['with the Large Hadron Collider', 'with the Hubble Space Telescope', 'Discord getting Uglier.😕 '])
+status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
 
 #intents = discord.Intents.default()
 #intents.members = True
