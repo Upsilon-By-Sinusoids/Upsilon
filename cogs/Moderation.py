@@ -110,9 +110,9 @@ anything you say or do can be used against you in the court of law.""", color=di
        
     @arrest.error
     async def arrest_error(self, ctx, error):
+        await ctx.send(f"{error}")
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")
-            
+            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")            
         
         
         
