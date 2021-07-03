@@ -97,21 +97,22 @@ class Moderation(commands.Cog):
         except:
             await ctx.send(f'Why were u trying to delete a channel 🤨')
         
-        
+    
+    @commands.has_permissions(manage_roles=True)
     @commands.command(aliases=["takedown","exile"])
     async def arrest(self, ctx, member : discord.Member):
-        for i in (member.roles):
-            await i.delete
+        "Removes all roles of the offender"
+        await member.remove_roles(member.roles)
         embed = discord.Embed(title=f"{member.name}, you are under arrest.",description="""You have the right to remain silent,
 anything you say or do can be used against you in the court of law.""", color=discord.Color(red))
         await ctx.send(embed=embed)
-        
-        
-        
-        
-        
-        
-        
+        await ctx.embed.add_reaction(emoji="✅")
+       
+    @arrest.error
+    async def prison_error(ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")
+            
         
         
         
