@@ -107,7 +107,7 @@ class Moderation(commands.Cog):
         l.pop(0)
         await member.remove_roles(*l, reason = None, atomic = True)
         embed = discord.Embed(title=f"{member.name}, you are under arrest.",description="""You have the right to remain silent,
-anything you say or do can be used against you in the court of law.""", color=discord.Color(red))
+anything you say or do can be used against you in the court of law.""", color=discord.Color.red())
         await ctx.send(embed=embed)
         await ctx.embed.add_reaction(emoji="✅")
        
