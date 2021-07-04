@@ -31,7 +31,8 @@ def write(a):
     b.write(a)
     b.close()
     print(a) 
-
+async def record_usage(ctx):
+    await ctx.send(f"{ctx.author} used {ctx.command} at {ctx.message.created_at}")
 
 class Moderation(commands.Cog):
 
@@ -115,10 +116,10 @@ anything you say or do can be used against you in the court of law.""", color=di
        
     @arrest.error
     async def arrest_error(self, ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-            await ctx.send(f"WARNING, UNAUTHORISED COMMAND USAGE by {ctx.author.mention}")  
         if isinstance(error, commands.MemberNotFound):
             await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
+        elif isinstance(error, commands.MissingPermissions):
+            await ctx.send(f"WARNING, UNAUTHORISED COMMAND USAGE by {ctx.author.mention}")  
         else:
             await ctx.send(f"{error}")
         
