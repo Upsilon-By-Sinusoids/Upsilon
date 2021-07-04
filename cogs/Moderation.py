@@ -98,6 +98,11 @@ class Moderation(commands.Cog):
         except:
             await ctx.send("https://tenor.com/view/hi-hey-chipmunk-gif-9383966")
             await ctx.send(f'Why were u trying to delete a channel 🤨')
+            
+    @nuke.error
+    async def nuke_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send(f"**WARNING**, __Possible Anarchyst found in Server --> {ctx.author.mention}__")  
         
     
     @commands.has_permissions(manage_roles=True)
