@@ -103,6 +103,8 @@ class Moderation(commands.Cog):
     @commands.command(aliases=["takedown","exile"])
     async def arrest(self, ctx, member : discord.Member):
         "Removes all roles of the offender"
+        if ctx.author == member: 
+            await ctx.send("You can't arrest yourself dummy!")
         l = member.roles
         l.pop(0)
         await member.remove_roles(*l, reason = None, atomic = True)
@@ -114,7 +116,7 @@ anything you say or do can be used against you in the court of law.""", color=di
     @arrest.error
     async def arrest_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send("Look bro, I know you don't have the permissions so just stop using Moderation commands.")  
+            await ctx.send(f"WARNING, UNAUTHORISED COMMAND USAGE by {ctx.author.mention}")  
         else:
             await ctx.send(f"{error}")
         
