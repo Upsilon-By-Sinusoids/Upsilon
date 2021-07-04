@@ -117,6 +117,8 @@ anything you say or do can be used against you in the court of law.""", color=di
     async def arrest_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send(f"WARNING, UNAUTHORISED COMMAND USAGE by {ctx.author.mention}")  
+        if isinstance(error, commands.MemberNotFound):
+            await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
         else:
             await ctx.send(f"{error}")
         
