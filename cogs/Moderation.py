@@ -99,7 +99,7 @@ class Moderation(commands.Cog):
             await ctx.send("https://tenor.com/view/hi-hey-chipmunk-gif-9383966")
             await ctx.send(f'Why were u trying to delete a channel 🤨')
             
-    @nuke.error
+    #@nuke.error
     async def nuke_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send(f"**WARNING**, __Possible Anarchyst found in Server --> {ctx.author.mention}__")  
@@ -119,7 +119,7 @@ anything you say or do can be used against you in the court of law.""", color=di
         await ctx.send(embed=embed)
         #await ctx.add_reaction(emoji="✅")
        
-    @arrest.error
+    #@arrest.error
     async def arrest_error(self, ctx, error):
         if isinstance(error, commands.MemberNotFound):
             await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
