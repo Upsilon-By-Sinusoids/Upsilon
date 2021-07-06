@@ -111,6 +111,7 @@ class Moderation(commands.Cog):
         "Removes all roles of the offender"
         if ctx.author == member: 
             await ctx.send("You can't arrest yourself dummy!")
+            return
         l = member.roles
         l.pop(0)
         await member.remove_roles(*l, reason = None, atomic = True)
@@ -118,15 +119,6 @@ class Moderation(commands.Cog):
 anything you say or do can be used against you in the court of law.""", color=discord.Color.red())
         await ctx.send(embed=embed)
         #await ctx.add_reaction(emoji="✅")
-       
-    #@arrest.error
-    async def arrest_error(self, ctx, error):
-        if isinstance(error, commands.MemberNotFound):
-            await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
-        elif isinstance(error, commands.MissingPermissions):
-            await ctx.send(f"WARNING, UNAUTHORISED COMMAND USAGE by {ctx.author.mention}")  
-        else:
-            await ctx.send(f"{error}")
         
         
 def setup(client):
