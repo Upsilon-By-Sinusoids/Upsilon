@@ -36,8 +36,7 @@ class ErrorHandler(commands.Cog):
             await ctx.send(r.format(ctx.author.mention))
         elif isinstance(error, commands.MemberNotFound):
             await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
-        else:
-            await ctx.send(f"An error occured, please consider taking help from the support server.")
+        
          
         
         
