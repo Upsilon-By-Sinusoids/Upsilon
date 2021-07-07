@@ -62,9 +62,6 @@ class Function(commands.Cog):
         #    return
         if message.channel.id == 845245176888688660:
             return
-        if message.author.id == 719480945962516541:
-            embed = discord.Embed(title="This message was sent by rohanvkumarv#6837 and deleted", description=f"{message.content}",color=discord.Color.blurple())
-            ctx.send(embed=embed)
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
         message = f" \"{message.content}\" was sent by {message.author} and later deleted in the channel {message.channel} of the server {message.guild}"
         channel = self.client.get_channel(845245176888688660)
