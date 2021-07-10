@@ -49,8 +49,8 @@ async def on_guild_remove(guild):
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
 
-@command.has_permissions(administrator=True)
 @client.command(aliases=["prefix"])
+@commands.has_permissions(administrator=True)
 async def changeprefix(ctx, prefix):
     """Set a custom prefix for your server"""
     with open("prefixes.json", "r") as f:
