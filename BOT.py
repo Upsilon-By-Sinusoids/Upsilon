@@ -16,29 +16,59 @@ logger.addHandler(handler)
 
 intents = discord.Intents().all()
 
-client = commands.Bot(command_prefix = '.', intents = intents)
+def get_prefix(client, message):
+    with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+    return prefixes[str(message.guild.id)]
+
+client = commands.Bot(command_prefix = get_prefix, intents = intents)
 status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
-
-#intents = discord.Intents.default()
-#intents.members = True
-#intents.presences = True
-
-#async for guild in client.fetch_guilds(limit=150):
-#    member = "ΔΨφ#6251"
-#    channel = await member.create_dm()
-#    print(guild.name)
-#    await channel.send(list(guild.name))
-    
-def write(a):
-    b = open("fileTowrite.txt","w+")
-    b.write(a)
-    b.close()
-    print(a) 
 
 @client.event
 async def on_ready():
     change_status.start()
     print('status changed')
+
+@client.event
+async def on_guild_join(guild):
+    with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+
+    prefixes[str(guild.id)] = '.'
+
+    with open("prefixes.json", "w") as f:
+        json.dump(prefixes, f, indent=4)
+
+@client.event
+async def on_guild_remove(guild):
+    with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+
+    prefixes.pop(str(guild.id))
+
+    with open("prefixes.json", "w") as f:
+        json.dump(prefixes, f, indent=4)
+
+@client.command.has_permissions(administrator=True)
+@client.command(aliases=["prefix"])
+async def changeprefix(ctx, prefix):
+    """Set a custom prefix for your server"""
+    with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+
+    prefixes[str(ctx.guild.id)] = prefix
+
+    with open("prefixes.json", "w") as f:
+        json.dump(prefixes, f, indent=4)
+    
+    await ctx.send(f"Prefix changed to {prefix}")
+
+@changeprefix.error
+async def changeprefix_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        return
+    else:
+        await ctx.send(f"The following error occured \n {error}")
     
 #@client.event
 async def on_member_join(cxt, ajrkgbmember): #member only remove everything else to make it work
