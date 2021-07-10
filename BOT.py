@@ -21,7 +21,7 @@ def get_prefix(client, message):
         prefixes = json.load(f)
     return prefixes[str(message.guild.id)]
 
-client = commands.Bot(command_prefix = get_prefix, intents = intents)
+client = commands.Bot(command_prefix = get_prefix(client, message), intents = intents)
 status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
 
 @client.event
