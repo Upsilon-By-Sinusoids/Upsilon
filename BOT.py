@@ -8,6 +8,34 @@ import json
 import discord
 import logging
 
+def get_prefix(client, message):
+    with open("prefixes.json", "r") as f:
+        prefixes = json.load(f)
+    return prefixes[str(message.guild.id)]
+
+class CustomHelpCommand(commands.HelpCommand):
+    def __init__(self):
+        super().__init__()
+
+    async def send_bot_help(self, mapping):
+        embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix}help <module>` to gain more information about that module", color=discord.Color.blurple())
+        for cog in mapping:
+            embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in cog.get_commands()]}",inline=False)
+        await self.get_destination().send(embed=embed)
+
+    async def send_cog_help(self, cog):
+        embed=discord.Embed(title=f"{cog.qualified_name}", color=discord.Color.green())
+        for command in cog.get_commands:
+            embed.add_field(name=f"{command.name}")
+        await self.get_destination().send(embed=embed)
+
+    async def send_command_help(self, command):
+        embed=discord.Embed(title=f"{command.name}")
+        embed.add_field(name=f"{command.description}")
+        await self.get_destination().send(embed=embed)
+
+
+
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -16,12 +44,7 @@ logger.addHandler(handler)
 
 intents = discord.Intents().all()
 
-def get_prefix(client, message):
-    with open("prefixes.json", "r") as f:
-        prefixes = json.load(f)
-    return prefixes[str(message.guild.id)]
-
-client = commands.Bot(command_prefix = get_prefix, intents = intents)
+client = commands.Bot(command_prefix = get_prefix, intents = intents, help_command=CustomHelpCommand())
 status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
 
 @client.event
