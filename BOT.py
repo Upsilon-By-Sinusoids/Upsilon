@@ -15,7 +15,7 @@ def get_prefix(client, message):
 
 class CustomHelpCommand(commands.HelpCommand):
     def __init__(self):
-        self.client = client
+        super().__init__()
 
     async def send_bot_help(self, mapping):
         embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix}help <module>` to gain more information about that module", color=discord.Color.blurple())
