@@ -23,22 +23,26 @@ class CustomHelpCommand(commands.HelpCommand):
         for cog in mapping:
             if cog == None:
                 break
+            if len(mapping[cog]) == 0:
+                continue
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
+        embed.set_footer(text="Type .help command for more info on a command. \nYou can also type .help category for more info on a category.")
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
         embed=discord.Embed(title=f"{cog.qualified_name}", color=discord.Color.green())
         for command in cog.get_commands():
-            embed.add_field(name=f"{command.name}", value=f"{command.help} \n{command.signature}", inline=False)
+            embed.add_field(name=f"{command.name}", value=f"{command.help}", inline=False)
+            embed.add_field(name=f"Usage:", value=f"{command.signature}")
         await self.get_destination().send(embed=embed)
 
     async def send_command_help(self, command):
-        embed=discord.Embed(title=f"{command.name}",description=f"{command.help}", color=discord.Color.blue())
+        embed=discord.Embed(title=f"{command.name}",description=f"{command.help}", color=discord.Color.red())
         if command.aliases is not None:
             embed.set_author(name=f"Aliases : {command.aliases}")
         else: 
             pass
-        #embed.set_footer(text=f"{command.usage}       {command.description}         {command.brief}         {command.help}")
+        embed.add_field(name=f"Usage:", value=f"{command.signature}")
         await self.get_destination().send(embed=embed)
 
 
