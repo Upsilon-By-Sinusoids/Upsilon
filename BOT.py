@@ -18,7 +18,7 @@ class CustomHelpCommand(commands.HelpCommand):
         super().__init__()
 
     async def send_bot_help(self, mapping):
-        embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix}help <module>` to gain more information about that module", color=discord.Color.blurple())
+        embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix()}help <module>` to gain more information about that module", color=discord.Color.blurple())
         print(mapping)
         for cog in mapping:
             if cog == None:
