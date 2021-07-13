@@ -31,7 +31,7 @@ class CustomHelpCommand(commands.HelpCommand):
 
     async def send_command_help(self, command):
         embed=discord.Embed(title=f"{command.name}",description=f"{command.help}", color=discord.Color.blue())
-        if command.aliases not None:
+        if command.aliases is not None:
             embed.set_author(name=f"Aliases : {command.aliases}")
         else: 
             pass
