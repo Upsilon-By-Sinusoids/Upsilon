@@ -20,7 +20,7 @@ class CustomHelpCommand(commands.HelpCommand):
     async def send_bot_help(self, mapping):
         embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix}help <module>` to gain more information about that module", color=discord.Color.blurple())
         for cog in mapping:
-            embed.add_field(name=f"{cog}:", value=f"{mapping[cog]}",inline=False)
+            embed.add_field(name=f"{cog.qualified_name}:", value=f"{mapping[cog].name}",inline=False)
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
