@@ -18,7 +18,7 @@ class CustomHelpCommand(commands.HelpCommand):
         super().__init__()
 
     async def send_bot_help(self, mapping):
-        pre = await on_message(ctx, message)
+        pre = await on_message(message)
         embed=discord.Embed(title="This is the Help Command. Duh.", description="", color=discord.Color.blurple())
         for cog in mapping:
             if cog == None:
@@ -106,7 +106,7 @@ async def changeprefix_error(ctx, error):
         
         
 @client.event
-async def on_message(ctx, message):
+async def on_message(message):
     if message.content.endswith("help"):
         with open("prefixes.json", "r") as f:
             prefixes = json.load(f)
