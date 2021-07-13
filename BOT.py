@@ -26,13 +26,16 @@ class CustomHelpCommand(commands.HelpCommand):
     async def send_cog_help(self, cog):
         embed=discord.Embed(title=f"{cog.qualified_name}", color=discord.Color.green())
         for command in cog.get_commands():
-            embed.add_field(name=f"{command.name}", value=f"this : {command.signature}", inline=False)
+            embed.add_field(name=f"{command.name}", value=f"{command.help} \n{command.signature}", inline=False)
         await self.get_destination().send(embed=embed)
 
     async def send_command_help(self, command):
         embed=discord.Embed(title=f"{command.name}",description=f"{command.help}", color=discord.Color.blue())
-        embed.set_author(name=f"Aliases : {command.aliases}")
-        embed.set_footer(text=f"{command.usage}       {command.description}         {command.brief}         {command.help}")
+        if command.aliases not None:
+            embed.set_author(name=f"Aliases : {command.aliases}")
+        else: 
+            pass
+        #embed.set_footer(text=f"{command.usage}       {command.description}         {command.brief}         {command.help}")
         await self.get_destination().send(embed=embed)
 
 
