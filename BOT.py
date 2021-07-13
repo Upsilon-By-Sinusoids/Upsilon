@@ -25,7 +25,7 @@ class CustomHelpCommand(commands.HelpCommand):
             if len(mapping[cog]) == 0:
                 continue
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
-        embed.set_footer(text=f"Type ``.help <command>`` for more information on a command. \nYou can also type ``.help <category>`` for more info on a category.")
+        embed.set_footer(text=r"Type ``.help <command>`` for more information on a command. \nYou can also type ``.help <category>`` for more info on a category.")
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
