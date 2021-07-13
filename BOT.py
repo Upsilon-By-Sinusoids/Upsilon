@@ -18,15 +18,15 @@ class CustomHelpCommand(commands.HelpCommand):
         super().__init__()
 
     async def send_bot_help(self, mapping):
-        embed=discord.Embed(title="This is the Help Command", description=f"Use `{get_prefix(client, message)}help <module>` to gain more information about that module", color=discord.Color.blurple())
-        print(mapping)
+        pre = await on_message(ctx, message)
+        embed=discord.Embed(title="This is the Help Command. Duh.", description="", color=discord.Color.blurple())
         for cog in mapping:
             if cog == None:
                 break
             if len(mapping[cog]) == 0:
                 continue
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
-        embed.set_footer(text="Type .help command for more info on a command. \nYou can also type .help category for more info on a category.")
+        embed.set_footer(text=f"Type ``{pre}help <command>`` for more information on a command. \nYou can also type ``{pre}help <category>`` for more info on a category.")
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
@@ -103,6 +103,14 @@ async def changeprefix_error(ctx, error):
         return
     else:
         await ctx.send(f"The following error occured \n {error}")
+        
+        
+@client.event
+async def on_message(ctx, message):
+    if message.content.endswith("help"):
+        with open("prefixes.json", "r") as f:
+            prefixes = json.load(f)
+        return prefixes[str(message.guild.id)]
     
 #@client.event
 async def on_member_join(cxt, ajrkgbmember): #member only remove everything else to make it work
@@ -142,7 +150,7 @@ async def unload(ctx, extension):
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong!, {round(client.latency * 1000)}ms')
+    await ctx.send(f'Pong!, {round(client.latency * 1000)} milliseconds')
 
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
