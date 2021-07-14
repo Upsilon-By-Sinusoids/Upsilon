@@ -53,7 +53,7 @@ logger.addHandler(handler)
 
 intents = discord.Intents().all()
 
-client = commands.Bot(command_prefix = '.', help_command=CustomHelpCommand(), intents = intents)
+client = commands.Bot(command_prefix = '.', help_command=CustomHelpCommand(), case_insensitive=True, intents = intents)
 status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
 
 @client.event
