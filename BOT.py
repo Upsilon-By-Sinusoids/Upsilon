@@ -31,8 +31,7 @@ class CustomHelpCommand(commands.HelpCommand):
     async def send_cog_help(self, cog):
         embed=discord.Embed(title=f"{cog.qualified_name}", color=discord.Color.green())
         for command in cog.get_commands():
-            embed.add_field(name=f"{command.name}", value=f"{command.help}", inline=False)
-            embed.add_field(name=f"Usage:", value=f"{command.signature}")
+            embed.add_field(name=f"{command.name}", value=f"{if command.help is not None: command.help} \nUsage: {command.signature}", inline=False)
         await self.get_destination().send(embed=embed)
 
     async def send_command_help(self, command):
