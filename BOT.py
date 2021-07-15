@@ -25,8 +25,8 @@ class CustomHelpCommand(commands.HelpCommand):
             if len(mapping[cog]) == 0:
                 continue
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
-        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote")
-        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF")
+        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
+        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
         embed.set_footer(text="Type ``.help <command>`` for more information on a command. \nYou can also type ``.help <category>`` for more info on a category. \nCreated by ΔΨφ#0001 (he's the Devil, so don't play with him :smiling_imp:)")
         await self.get_destination().send(embed=embed)
 
@@ -34,8 +34,8 @@ class CustomHelpCommand(commands.HelpCommand):
         embed=discord.Embed(title=f"{cog.qualified_name}", color=discord.Color.green())
         for command in cog.get_commands():
             embed.add_field(name=f"{command.name}", value=f"{command.help} \nUsage: {command.signature}", inline=False)
-        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote")
-        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF")
+        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
+        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
         embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him :smiling_imp:)")
         await self.get_destination().send(embed=embed)
 
@@ -46,9 +46,9 @@ class CustomHelpCommand(commands.HelpCommand):
         else: 
             pass
         embed.add_field(name=f"Usage:", value=f"{command.signature} \n{command.help}")
-        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote")
-        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF")
-        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him :smiling_imp:)")
+        embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
+        embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
+        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him \:smiling_imp:)")
         await self.get_destination().send(embed=embed)
 
 
