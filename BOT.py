@@ -27,7 +27,7 @@ class CustomHelpCommand(commands.HelpCommand):
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
         embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
         embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
-        embed.set_footer(text="Type ``.help <command>`` for more information on a command. \nYou can also type ``.help <category>`` for more info on a category. \nCreated by ΔΨφ#0001 (he's the Devil, so don't play with him :smiling_imp:)")
+        embed.set_footer(text="Type ``.help <command>`` for more information on a command. \nYou can also type ``.help <category>`` for more info on a category. \nCreated by ΔΨφ#0001 (he's the Devil, so don't play with him 😈)")
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
@@ -36,7 +36,7 @@ class CustomHelpCommand(commands.HelpCommand):
             embed.add_field(name=f"{command.name}", value=f"{command.help} \nUsage: {command.signature}", inline=False)
         embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
         embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
-        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him :smiling_imp:)")
+        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him 😈)")
         await self.get_destination().send(embed=embed)
 
     async def send_command_help(self, command):
@@ -48,7 +48,7 @@ class CustomHelpCommand(commands.HelpCommand):
         embed.add_field(name=f"Usage:", value=f"{command.signature} \n{command.help}")
         embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
         embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
-        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him \:smiling_imp:)")
+        embed.set_footer(text="Created by ΔΨφ#0001 (he's the Devil, so don't play with him 😈)")
         await self.get_destination().send(embed=embed)
 
 
