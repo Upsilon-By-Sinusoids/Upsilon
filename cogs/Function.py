@@ -221,7 +221,8 @@ class Function(commands.Cog):
     @commands.has_permissions(create_instant_invite=True)
     async def _server(self, ctx):
         """Generates an invite link to the server the bot is in."""
-        embed=discord.Embed(title=f"{ctx.channel.guild.name}", url=f'{await ctx.channel.create_invite(max_age="300")}', description="", color=0x270de7)
+        embed=discord.Embed(title=f"Server Invite Link: ", url=f'{await ctx.channel.create_invite(max_age="300")}', description=f"{await ctx.channel.create_invite(max_age="300")}", color=discord.Color.purple())
+        embed.set_author(name=f"{ctx.channel.guild.name}")
         embed.set_image(url=(f"{ctx.channel.guild.icon_url}"))
         await ctx.send(embed=embed)
 
