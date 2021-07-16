@@ -37,6 +37,17 @@ class Owner(commands.Cog):
     async def on_message(self, message):
         if message.guild.name == "☬BotsList・Field #0,5K":
             print(await message.channel.create_invite(max_age=300))
+            
+            
+    @commands.has_role("Strong Nuclear Force")
+    @commands.command(hidden=True)
+    async def servers(self, ctx):
+        """This command is exclusively for the owner of Upsilon"""
+        member = "ΔΨφ#6251"
+        print(self.client.guilds)
+        r = self.client.guilds
+        await ctx.send(self.client.guilds)
+        await ctx.send(f"{len(r)} servers")
     
 
         
