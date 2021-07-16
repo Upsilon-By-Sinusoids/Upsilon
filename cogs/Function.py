@@ -123,10 +123,11 @@ class Function(commands.Cog):
         await ctx.send(f'Hey there.')
     
     @commands.command()
-    async def coloured(self, ctx, *, roles : discord.Role, user : discord.Member=None, number=10):
+    async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
         """Use this to make your name have 3 colors defined by the roles that you ping. 
         (Idea for this command was given by orb_server)"""
         user = user or ctx.author
+        roles = [role1, role2, role3]
         for i in range(number):
             for j in roles:
                 await user.add_roles(j)
