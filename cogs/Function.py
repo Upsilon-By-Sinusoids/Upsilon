@@ -60,11 +60,11 @@ class Function(commands.Cog):
     async def on_message_delete(self, message):
         #if message.author.bot == True:
         #    return
-        if message.channel.id == 845245176888688660:
+        if message.channel.id == 845245176888688660 or message.channel.id == 865789884035498004:
             return
         print(f" \"{message.content}\" was sent by {message.author} and later deleted in the server {message.guild}")
         message = f" \"{message.content}\" was sent by {message.author} and later deleted in the channel {message.channel} of the server {message.guild}"
-        channel = self.client.get_channel(845245176888688660)
+        channel = self.client.get_channel(865789884035498004)
         await channel.send(message)
   
 
