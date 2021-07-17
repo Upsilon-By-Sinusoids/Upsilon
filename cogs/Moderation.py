@@ -58,13 +58,13 @@ class Moderation(commands.Cog):
         choice = choice.format(message.author.mention)
         cha = self.client.get_channel(845245176888688660)
         if profanity.contains_profanity(message.content):
-            if message.author == "upsilon#8301":
+            if message.author.id == 784473379183788055:
                 return
             if message.guild.name in ls:
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
-                #await cha.send(f"{message.content},     {message.channel},    {message.guild.name}")
+                await cha.send(f"``{message.content},  \t   {message.channel},  \t  {message.guild.name}``")
                 await message.channel.send(choice)
                 await message.delete()
                 
@@ -118,7 +118,7 @@ class Moderation(commands.Cog):
         embed = discord.Embed(title=f"{member.name}, you are under arrest.",description="""You have the right to remain silent,
 anything you say or do can be used against you in the court of law.""", color=discord.Color.red())
         await ctx.send(embed=embed)
-        #await ctx.add_reaction(emoji="✅")
+        await embed.add_reaction(emoji="✅")
         
         
 def setup(client):
