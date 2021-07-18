@@ -1,6 +1,6 @@
 import discord 
 from discord.ext import commands, tasks
-from discord_slash import SlashCommand
+from discord_slash import SlashCommand, SlashContext
 from itertools import cycle
 import time
 import youtube_dl
