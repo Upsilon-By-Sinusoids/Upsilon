@@ -178,6 +178,7 @@ class Function(commands.Cog):
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
 
+    @slash.slash(name="quote", description="generates a randome quote")
     @commands.command()
     async def _quote(self, ctx):
         """generates a randome quote"""
