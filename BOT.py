@@ -154,6 +154,9 @@ async def unload(ctx, extension):
 guild_ids=[784455316468793406]    
     
 @slash.slash(name='ping', description="Get the bot's latency!")
+async def ping(ctx: SlashContext):
+    await ctx.send(f'Pong!, {round(client.latency * 1000)} milliseconds')
+    
 @client.command()
 async def ping(ctx: SlashContext):
     await ctx.send(f'Pong!, {round(client.latency * 1000)} milliseconds')
