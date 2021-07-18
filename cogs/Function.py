@@ -178,7 +178,6 @@ class Function(commands.Cog):
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
 
-    @cog_ext.cog_slash(name="quote")
     @commands.command()
     async def _quote(self, ctx):
         """generates a randome quote"""
