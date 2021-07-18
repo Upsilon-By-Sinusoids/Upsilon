@@ -1,5 +1,5 @@
 import discord
-from discord_slash import SlashCommand
+from discord_slash import SlashCommand, SlashContext
 import time
 import os
 from discord.ext import commands, tasks
@@ -155,7 +155,7 @@ guild_ids=[784455316468793406]
     
 @slash.slash(name='ping', description="Get the bot's latency!")
 @client.command()
-async def ping(ctx):
+async def ping(ctx: SlashContext):
     await ctx.send(f'Pong!, {round(client.latency * 1000)} milliseconds')
 
 for filename in os.listdir('cogs'):
