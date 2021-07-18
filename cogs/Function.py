@@ -144,6 +144,13 @@ class Function(commands.Cog):
         embed.set_image(url=(pp))
         await ctx.send(embed=embed)
         
+    @cog_ext.cog_slash(name="avatar", description="Get your or any other user's avatar")
+    async def avatar(self, ctx: SlashContext, user : discord.Member = None):
+        user = user or ctx.author
+        pp = user.avatar_url
+        embed=discord.Embed(title=f"{user}'s Avatar", description='', color=0x270de7)
+        embed.set_image(url=(pp))
+        await ctx.send(embed=embed)
             
     #@commands.has_role("Strong Nuclear Force")
     #@commands.command(hidden=True)
