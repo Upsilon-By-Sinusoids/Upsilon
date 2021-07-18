@@ -122,6 +122,13 @@ class Function(commands.Cog):
     async def hello(self, ctx):
         """Greets you"""
         await ctx.send(f'Hey there.')
+        
+    @cog_ext.cog_slash(name="hello", description="Greets you")
+    async def hello(self, ctx):
+        """Greets you"""
+        await ctx.send(f'Hey there.')
+        
+        
     
     @commands.command()
     async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
@@ -135,6 +142,10 @@ class Function(commands.Cog):
                 await asyncio.sleep(1)
                 await user.remove_roles(j)
                 await asyncio.sleep(2)
+                
+                
+                
+                
                 
     @commands.command(aliases=["pfp"])
     async def avatar(self, ctx, user : discord.Member = None):
@@ -162,6 +173,7 @@ class Function(commands.Cog):
         
         
         
+        
     @commands.command(name="invite", aliases=["bot invite link", "bot link"])
     async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
@@ -175,6 +187,22 @@ class Function(commands.Cog):
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
         
+    @cog_ext.cog_slash(name="invite", description="Generate an invite link to invite this bot to your server")
+    async def _invite(self, ctx):
+        """Generate an invite link to invite this bot to your server"""
+        ur = 'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot%20applications.commands'
+        time.sleep(0.2)
+        omg = 'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.'
+        embed = discord.Embed(title="Invite Link", url=ur, color=discord.Color.blurple())
+        embed.set_footer(text=omg)
+        await ctx.send(embed=embed)
+        m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
+        channel = self.client.get_channel(845245176888688660)
+        await channel.send(m)
+        
+        
+        
+        
     @commands.command(name="upvote", aliases=["vote", "vote for bot", "upvote bot"])
     async def _upvote(self, ctx):
         """Vote for me !!!"""
@@ -184,8 +212,29 @@ class Function(commands.Cog):
         embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
+        
+    @cog_ext.cog_slash(name="upvote", description="Vote for me !!!")
+    async def _upvote(self, ctx):
+        """Vote for me !!!"""
+        embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
+        embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
+        embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
+        embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
+        embed.set_footer(text="Help us grow!")
+        await ctx.send(embed=embed)
+        
+        
+        
+        
 
     @cog_ext.cog_slash(name="quote", description="generates a randome quote")
+    async def _quote(self, ctx: SlashContext):
+        """generates a randome quote"""
+        response = requests.get("https://zenquotes.io/api/random")
+        json_data = json.loads(response.text)
+        quote = json_data[0]['q'] + " -" + json_data[0]['a']
+        await ctx.send(quote)
+        
     @commands.command()
     async def _quote(self, ctx: SlashContext):
         """generates a randome quote"""
@@ -194,6 +243,10 @@ class Function(commands.Cog):
         quote = json_data[0]['q'] + " -" + json_data[0]['a']
         await ctx.send(quote)
 
+        
+        
+        
+        
     @commands.command()
     async def physics(self, ctx):
         """creates an embed with a link for the science blog -- deltapsifi"""
