@@ -1,5 +1,6 @@
 import discord 
 from discord.ext import commands, tasks
+from discord_slash import SlashCommand
 from itertools import cycle
 import time
 import youtube_dl
@@ -157,9 +158,12 @@ class Function(commands.Cog):
     @commands.command(name="invite", aliases=["bot invite link", "bot link"])
     async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
-        await ctx.send(f'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot')
+        ur = 'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot%20applications.commands'
         time.sleep(0.2)
-        await ctx.send(f'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.')
+        omg = 'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.'
+        embed = discord.Embed(title="Invite Link", url=ur, color=discord.Color.blurple())
+        embed.set_footer(text=omg)
+        await ctx.send(embed=embed)
         m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
@@ -174,8 +178,9 @@ class Function(commands.Cog):
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
 
+    @cog_ext.cog_slash(name="quote")
     @commands.command()
-    async def quote(self, ctx):
+    async def _quote(self, ctx):
         """generates a randome quote"""
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
