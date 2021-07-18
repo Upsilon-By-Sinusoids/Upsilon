@@ -1,4 +1,5 @@
 import discord
+from discord_slash import SlashCommand
 import time
 import os
 from discord.ext import commands, tasks
@@ -149,6 +150,9 @@ async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     await ctx.send(f'successfully unloaded {extension}')
 
+guild_ids=[784455316468793406]    
+    
+@slash.slash(name="ping", guild_ids=guild_ids)
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong!, {round(client.latency * 1000)} milliseconds')
