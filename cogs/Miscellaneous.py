@@ -1,4 +1,5 @@
 import discord 
+from discord_slash import cog_ext, SlashCommand, SlashContext
 from discord.ext import commands, tasks
 from itertools import cycle
 import time
