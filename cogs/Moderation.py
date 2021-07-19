@@ -24,7 +24,7 @@ from datetime import date
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
-ls = ["Corner of the Universe", "Particle Science's Discord", "The Social Experiment"]
+ls = [800448021242052659, 808508913447469106, 844128237587791872, 846203896401231882]
 
 def write(a):
     b = open("fileTowrite.txt","w+")
@@ -60,7 +60,7 @@ class Moderation(commands.Cog):
         if profanity.contains_profanity(message.content):
             if message.author.id == 784473379183788055:
                 return
-            if message.guild.name in ls:
+            if message.guild.id in ls:
                 return
             else:
                 print(message.content, message.channel, message.guild.name, sep="\t")
