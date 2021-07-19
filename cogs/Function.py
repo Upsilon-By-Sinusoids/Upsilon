@@ -200,7 +200,7 @@ class Function(commands.Cog):
         
         
     @commands.command()
-    async def _physics(self, ctx):
+    async def physics(self, ctx):
         """creates an embed with a link for the science blog -- deltapsifi"""
         embed=discord.Embed(title="A science blog", url="https://deltapsifi.com/", description="A place to learn about various concepts in the fields of Quantum Mechanics, Particle Physics, and Math.", color=0x3c08f7)
         embed.set_author(name="ΔΨφ", url="https://deltapsifi.com/")
