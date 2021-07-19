@@ -188,9 +188,9 @@ class Function(commands.Cog):
         await ctx.send(embed=embed)
 
 
-  
+    @cog_ext.cog_slash(name="quote", description="Generates a random Quote")
     @commands.command(name="quote")
-    async def _quote(self, ctx):
+    async def _quote(self, ctx: SlashContext):
         """generates a randome quote"""
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
