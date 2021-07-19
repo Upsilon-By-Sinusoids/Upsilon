@@ -39,12 +39,12 @@ class Slash(commands.Cog):
         print('Slash Commands are working')    
   
     @cog_ext.cog_slash(name="hello", description="Greets you")
-    async def hello(self, ctx):
+    async def hello(self, ctx: SlashContext):
         """Greets you"""
         await ctx.send(f'Hey there.')
     
     @cog_ext.cog_slash(name="coloured", description="Use this to make your name have 3 colors defined by the roles that you ping.")    
-    async def _coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
+    async def _coloured(self, ctx: SlashContext, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
         """Use this to make your name have 3 colors defined by the roles that you ping."""
         user = user or ctx.author
         roles = [role1, role2, role3]
@@ -78,7 +78,7 @@ class Slash(commands.Cog):
         
         
     @cog_ext.cog_slash(name="upvote", description="Vote for me !!!")
-    async def _upvote(self, ctx):
+    async def _upvote(self, ctx: SlashContext):
         """Vote for me !!!"""
         embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
         embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
@@ -87,8 +87,8 @@ class Slash(commands.Cog):
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
         
-    @cog_ext.cog_slash(name="Physics Blog", description="creates an embed with a link for the science blog -- deltapsifi")
-    async def _Physics_Blog(self, ctx):
+    @cog_ext.cog_slash(name="physics", description="Creates an embed with a link for the Physics Blog -- deltapsifi")
+    async def _physics(self, ctx: SlashContext):
         """creates an embed with a link for the science blog -- deltapsifi"""
         embed=discord.Embed(title="A science blog", url="https://deltapsifi.com/", description="A place to learn about various concepts in the fields of Quantum Mechanics, Particle Physics, and Math.", color=0x3c08f7)
         embed.set_author(name="ΔΨφ", url="https://deltapsifi.com/")
@@ -97,8 +97,8 @@ class Slash(commands.Cog):
         await ctx.send(embed=embed)
  
       
-    @cog_ext.cog_slash(name="Computer Science Blog", description="creates an embed with a link for the computer science blog -- hackolympus")
-    async def _Computer_Science_Blog(self, ctx):
+    @cog_ext.cog_slash(name="cs", description="creates an embed with a link for the Computer Science Blog -- hackolympus")
+    async def _cs(self, ctx: SlashContext):
         """creates an embed with a link for the computer science blog -- hackolympus"""
         embed=discord.Embed(title="A computer science blog", url="https://hackolympus.com/", description="A place to learn about various concepts in the fields of cyber security, linux and many more. ", color=0x3c08f7)
         embed.set_author(name="Zeus", url="https://hackolympus.com/")
@@ -107,8 +107,8 @@ class Slash(commands.Cog):
         await ctx.send(embed=embed)
         
        
-    @cog_ext.cog_slash(name="Support Server", description="Creates an embed with an invite link for the support server of this bot")
-    async def _Support_Server(self, ctx):
+    @cog_ext.cog_slash(name="support", description="Creates an embed with an invite link for the support server of this bot")
+    async def _support(self, ctx: SlashContext):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
         embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
@@ -117,8 +117,8 @@ class Slash(commands.Cog):
         await ctx.send(embed=embed)
   
       
-    @cog_ext.cog_slash(name="Server Info", description="Gives information about the server and the server invite link")
-    async def _Server_Info(self, ctx):
+    @cog_ext.cog_slash(name="serverinfo", description="Gives information about the server and the server invite link")
+    async def _serverinfo(self, ctx: SlashContext):
         """Generates an invite link to the server the bot is in."""
         embed=discord.Embed(title=f"Server Invite Link:", url=f'{await ctx.channel.create_invite(max_age="300")}', description=f"{await ctx.channel.create_invite(max_age='300')}", color=discord.Color.purple())
         embed.set_author(name=f"{ctx.channel.guild.name}")
