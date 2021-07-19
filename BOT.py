@@ -25,7 +25,7 @@ class CustomHelpCommand(commands.HelpCommand):
                 break
             if len(mapping[cog]) == 0:
                 continue
-            if cog.qualified_name == "Owner":
+            if cog.qualified_name == "Owner" or cog.qualified_name == "Slash":
                 continue
             embed.add_field(name=f"{cog.qualified_name}:", value=f"{[command.name for command in mapping[cog]]}",inline=False)
         embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
