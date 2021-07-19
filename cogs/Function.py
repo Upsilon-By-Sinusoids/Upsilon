@@ -246,8 +246,8 @@ class Function(commands.Cog):
         quote = json_data[0]['q'] + " -" + json_data[0]['a']
         await ctx.send(quote)
         
-    @commands.command()
-    async def _quote(self, ctx: SlashContext):
+    @commands.command(name="quote")
+    async def _quote(self, ctx):
         """generates a randome quote"""
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
@@ -303,7 +303,7 @@ class Function(commands.Cog):
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
        
-    @cog_ext.cog_slash(name="Link to the Support Server", description="Creates an embed with an invite link for the support server of this bot")
+    @cog_ext.cog_slash(name="Support Server", description="Creates an embed with an invite link for the support server of this bot")
     async def _support(self, ctx):
         """creates an embed with an invite link for the support server of this bot"""
         embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
