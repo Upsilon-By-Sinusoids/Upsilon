@@ -86,15 +86,6 @@ class Slash(commands.Cog):
         embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
-      
-
-    @cog_ext.cog_slash(name="quote", description="generates a randome quote")
-    async def _quote(self, ctx):
-        """generates a randome quote"""
-        response = requests.get("https://zenquotes.io/api/random")
-        json_data = json.loads(response.text)
-        quote = json_data[0]['q'] + " -" + json_data[0]['a']
-        await ctx.send(quote)
         
     @cog_ext.cog_slash(name="Physics Blog", description="creates an embed with a link for the science blog -- deltapsifi")
     async def _Physics_Blog(self, ctx):
