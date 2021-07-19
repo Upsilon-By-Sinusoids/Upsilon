@@ -302,9 +302,31 @@ class Function(commands.Cog):
         embed.add_field(name="https://discord.gg/aXVWmDxRmF      ", value="Click on the server name to join the server and please share this invite link.", inline=False)
         embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
         await ctx.send(embed=embed)
+       
+    @cog_ext.cog_slash(name="Link to the Support Server", description="Creates an embed with an invite link for the support server of this bot")
+    async def _support(self, ctx):
+        """creates an embed with an invite link for the support server of this bot"""
+        embed=discord.Embed(title="A wonderful server for Science and Computer Science", url="https://discord.gg/aXVWmDxRmF", description="A great place for discussion, collaboration, getting your doubts cleared and learning new things on a variety of topics like quantum mechanics, quantum computing, astrophysics and many more. ", color=0x08f738)
+        embed.set_author(name="SINUSOIDS", url="https://discord.gg/aXVWmDxRmF")
+        embed.add_field(name="https://discord.gg/aXVWmDxRmF      ", value="Click on the server name to join the server and please share this invite link.", inline=False)
+        embed.set_footer(text="This server was created with the idea that knowledge must be accessible to and attainable by all individuals for free.")
+        await ctx.send(embed=embed)
+    
 
     @commands.command(name="server", aliases=["server invite", "server link"])
-    @commands.has_permissions(create_instant_invite=True)
+    async def _server(self, ctx):
+        """Generates an invite link to the server the bot is in."""
+        embed=discord.Embed(title=f"Server Invite Link:", url=f'{await ctx.channel.create_invite(max_age="300")}', description=f"{await ctx.channel.create_invite(max_age='300')}", color=discord.Color.purple())
+        embed.set_author(name=f"{ctx.channel.guild.name}")
+        embed.set_image(url=(f"{ctx.channel.guild.icon_url}"))
+        embed.add_field(name="Server Description:", value=f"{ctx.channel.guild.description}", inline=True)
+        embed.add_field(name=f"Owner:", value=f"{ctx.channel.guild.owner}", inline=True)
+        embed.add_field(name=f"Member Count:", value=f"{ctx.channel.guild.member_count}", inline=True)
+        embed.add_field(name=f"Created At:", value=f"{ctx.channel.guild.created_at}", inline=True)
+        embed.add_field(name="Server Link:", value=f'{await ctx.channel.create_invite(max_age="300")}')
+        await ctx.send(embed=embed)
+      
+    @cog_ext.cog_slash(name="Server Info", description="Gives information about the server and the server invite link")
     async def _server(self, ctx):
         """Generates an invite link to the server the bot is in."""
         embed=discord.Embed(title=f"Server Invite Link:", url=f'{await ctx.channel.create_invite(max_age="300")}', description=f"{await ctx.channel.create_invite(max_age='300')}", color=discord.Color.purple())
@@ -315,6 +337,7 @@ class Function(commands.Cog):
         embed.add_field(name=f"Member Count:", value=f"{ctx.channel.guild.member_count}", inline=True)
         embed.add_field(name=f"Created At:", value=f"{ctx.channel.guild.created_at}", inline=True)
         await ctx.send(embed=embed)
+        
       
     
 
