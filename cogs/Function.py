@@ -142,7 +142,18 @@ class Function(commands.Cog):
                 await asyncio.sleep(1)
                 await user.remove_roles(j)
                 await asyncio.sleep(2)
-                
+    
+    @cog_ext.cog_slash(name="coloured", description="Use this to make your name have 3 colors defined by the roles that you ping.")    
+    async def coloured(self, ctx, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
+        """Use this to make your name have 3 colors defined by the roles that you ping."""
+        user = user or ctx.author
+        roles = [role1, role2, role3]
+        for i in range(number):
+            for j in roles:
+                await user.add_roles(j)
+                await asyncio.sleep(1)
+                await user.remove_roles(j)
+                await asyncio.sleep(2)
                 
                 
                 
@@ -245,17 +256,25 @@ class Function(commands.Cog):
 
         
         
-        
-        
     @commands.command()
-    async def physics(self, ctx):
+    async def _physics(self, ctx):
         """creates an embed with a link for the science blog -- deltapsifi"""
         embed=discord.Embed(title="A science blog", url="https://deltapsifi.com/", description="A place to learn about various concepts in the fields of Quantum Mechanics, Particle Physics, and Math.", color=0x3c08f7)
         embed.set_author(name="ΔΨφ", url="https://deltapsifi.com/")
         embed.add_field(name="Click on the link above", value="And make sure to follow the blog in order to get updates directly in your inbox", inline=False)
         embed.set_footer(text="Here one can even talk about various theories in the field of science.")
         await ctx.send(embed=embed)
-
+        
+    @cog_ext.cog_slash(name="Physics Blog", description="creates an embed with a link for the science blog -- deltapsifi")
+    async def _physics(self, ctx):
+        """creates an embed with a link for the science blog -- deltapsifi"""
+        embed=discord.Embed(title="A science blog", url="https://deltapsifi.com/", description="A place to learn about various concepts in the fields of Quantum Mechanics, Particle Physics, and Math.", color=0x3c08f7)
+        embed.set_author(name="ΔΨφ", url="https://deltapsifi.com/")
+        embed.add_field(name="Click on the link above", value="And make sure to follow the blog in order to get updates directly in your inbox", inline=False)
+        embed.set_footer(text="Here one can even talk about various theories in the field of science.")
+        await ctx.send(embed=embed)
+        
+        
     @commands.command()
     async def cs(self, ctx):
         """creates an embed with a link for the computer science blog -- hackolympus"""
@@ -264,6 +283,16 @@ class Function(commands.Cog):
         embed.add_field(name="Click on the link above", value="And make sure to follow the blog in order to get updates directly in your inbox", inline=False)
         embed.set_footer(text="it also has various CTFs")
         await ctx.send(embed=embed)
+      
+    @cog_ext.cog_slash(name="Computer Science Blog", description="creates an embed with a link for the computer science blog -- hackolympus")
+    async def cs(self, ctx):
+        """creates an embed with a link for the computer science blog -- hackolympus"""
+        embed=discord.Embed(title="A computer science blog", url="https://hackolympus.com/", description="A place to learn about various concepts in the fields of cyber security, linux and many more. ", color=0x3c08f7)
+        embed.set_author(name="Zeus", url="https://hackolympus.com/")
+        embed.add_field(name="Click on the link above", value="And make sure to follow the blog in order to get updates directly in your inbox", inline=False)
+        embed.set_footer(text="it also has various CTFs")
+        await ctx.send(embed=embed)
+        
         
     @commands.command(name="support", aliases=["support server", "support invite"])
     async def _support(self, ctx):
@@ -286,6 +315,8 @@ class Function(commands.Cog):
         embed.add_field(name=f"Member Count:", value=f"{ctx.channel.guild.member_count}", inline=True)
         embed.add_field(name=f"Created At:", value=f"{ctx.channel.guild.created_at}", inline=True)
         await ctx.send(embed=embed)
+      
+    
 
 
     
