@@ -67,7 +67,7 @@ intents = discord.Intents().all()
 
 client = commands.Bot(command_prefix = '.', help_command=CustomHelpCommand(), case_insensitive=True, intents = intents)
 slash = SlashCommand(client, sync_commands=True)
-status = cycle(['with the Large Hadron Collider', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
+status = cycle(['against Authoritarian Governments that spy on their citizens', 'Microsoft Sucks!', 'Discord getting Uglier.😕 '])
 
 @client.event
 async def on_ready():
