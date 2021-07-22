@@ -135,8 +135,11 @@ class Slash(commands.Cog):
         """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
         if not ctx.author.guild_permissions.manage_messages:
             await ctx.send(f"Take a chill pill, don't do stuff you aren't supposed to.")
-        m = f"{amount} messages deleted in {ctx.message.guild}"
+        m = f"{amount} messages deleted in {ctx.guild} by {ctx.author}"
         await ctx.channel.purge(limit=amount+1)
+        await ctx.respond(f"{amount} messages deleted")
+        await asyncio.sleep(1)
+        await ctx.delete()
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
     
