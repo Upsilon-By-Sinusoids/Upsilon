@@ -137,7 +137,7 @@ class Slash(commands.Cog):
             await ctx.send(f"Take a chill pill, don't do stuff you aren't supposed to.")
         m = f"{amount} messages deleted in {ctx.guild} by {ctx.author}"
         await ctx.channel.purge(limit=amount+1)
-        await ctx.respond(f"{amount} messages deleted")
+        await ctx.send(f"{amount} messages deleted")
         await asyncio.sleep(1)
         await ctx.delete()
         channel = self.client.get_channel(845245176888688660)
