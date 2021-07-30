@@ -53,7 +53,7 @@ class Slash(commands.Cog):
                 message = "Changing Colors now /"
                 await ctx.send(message)
                 await asyncio.sleep(1)
-                await message.edit("Changing Colors now /", "Changing Colors now \")
+                await message.edit(content="Changing Colors now \")
                 await user.remove_roles(j)
                 await asyncio.sleep(2)
         
