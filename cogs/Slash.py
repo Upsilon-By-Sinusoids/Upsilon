@@ -47,7 +47,7 @@ class Slash(commands.Cog):
         """Use this to make your name have 3 colors defined by the roles that you ping."""
         user = user or ctx.author
         roles = [role1, role2, role3]
-        for i in range(number):
+        for i in range(int(number)):
             for j in roles:
                 await user.add_roles(j)
                 message = "Changing Colors now."
