@@ -47,12 +47,13 @@ class Slash(commands.Cog):
         """Use this to make your name have 3 colors defined by the roles that you ping."""
         user = user or ctx.author
         roles = [role1, role2, role3]
+        message = await ctx.send("Changing Colors now /")
         for i in range(int(number)):
             for j in roles:
                 await user.add_roles(j)
-                message = "Changing Colors now."
-                await ctx.send(message)
+                #await ctx.send(message)
                 await asyncio.sleep(1)
+                await message.edit(content="Changing Colors now \")
                 await user.remove_roles(j)
                 await asyncio.sleep(2)
         
