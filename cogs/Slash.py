@@ -15,7 +15,6 @@ import requests
 from chess import *
 import os
 #import chess.svg
-#import cairo
 #import cairosvg
 #import logging
 import ctypes
