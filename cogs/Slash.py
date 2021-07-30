@@ -50,10 +50,9 @@ class Slash(commands.Cog):
         for i in range(number):
             for j in roles:
                 await user.add_roles(j)
-                message = "Changing Colors now /"
+                message = "Changing Colors now."
                 await ctx.send(message)
                 await asyncio.sleep(1)
-                await message.edit(content="Changing Colors now \")
                 await user.remove_roles(j)
                 await asyncio.sleep(2)
         
