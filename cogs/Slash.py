@@ -137,8 +137,10 @@ class Slash(commands.Cog):
         if not ctx.author.guild_permissions.manage_messages:
             await ctx.send(f"Take a chill pill, don't do stuff you aren't supposed to.")
         m = f"{amount} messages deleted in {ctx.guild} by {ctx.author}"
-        await ctx.channel.purge(limit=int(amount)+1)
-        await ctx.send(f"{amount} messages deleted")
+        await ctx.channel.purge(limit=int(amount))
+        message = await ctx.send(f"{amount} messages deleted")
+        await asyncio.sleep(0.6)
+        await ctx.delete(message)
         channel = self.client.get_channel(845245176888688660)
         await channel.send(m)
     
