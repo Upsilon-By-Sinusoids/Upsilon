@@ -46,7 +46,7 @@ class Moderation(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.guild is None and message.author != client.user:
+        if message.guild is None and message.author != self.client.user:
             c = self.client.get_channel(791674031564521472)
             await c.send(message.content, message.author.name)
         responses = [
@@ -63,7 +63,7 @@ class Moderation(commands.Cog):
         if "’t it" in message.content:
             return
         if profanity.contains_profanity(message.content):
-            if message.author == client.user:
+            if message.author == self.client.user:
                 return
             if message.author.id == 784473379183788055:
                 return
