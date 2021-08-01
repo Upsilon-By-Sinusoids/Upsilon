@@ -48,7 +48,7 @@ class Moderation(commands.Cog):
     async def on_message(self, message):
         if message.guild is None and message.author != self.client.user:
             c = self.client.get_channel(791674031564521472)
-            await c.send(message.content, message.author.name)
+            await c.send(f"{message.content}, {message.author.name}")
         responses = [
             "You kiss your mother with that mouth, {}?",\
             "Woah {}, That's some colorful language.",\
