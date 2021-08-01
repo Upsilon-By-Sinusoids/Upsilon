@@ -46,6 +46,9 @@ class Moderation(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.guild is None and message.author != client.user:
+            c = self.client.get_channel(791674031564521472)
+            await c.send(message.content, message.author.name)
         responses = [
             "You kiss your mother with that mouth, {}?",\
             "Woah {}, That's some colorful language.",\
@@ -60,6 +63,8 @@ class Moderation(commands.Cog):
         if "’t it" in message.content:
             return
         if profanity.contains_profanity(message.content):
+            if message.author == client.user:
+                return
             if message.author.id == 784473379183788055:
                 return
             if message.guild.id in ls:
