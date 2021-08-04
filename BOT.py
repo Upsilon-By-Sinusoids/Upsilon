@@ -5,6 +5,7 @@ import os
 from discord.ext import commands, tasks
 from itertools import cycle
 from decouple import config
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 import json
 import discord
 import logging
@@ -72,6 +73,7 @@ status = cycle(['against Authoritarian Governments that spy on their citizens', 
 @client.event
 async def on_ready():
     change_status.start()
+    DiscordComponents(client)
     print('status changed')
 
 @client.event
