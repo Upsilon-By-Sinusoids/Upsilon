@@ -172,12 +172,11 @@ class Function(commands.Cog):
         omg = 'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.'
         embed = discord.Embed(title="Invite Link", url=ur, color=discord.Color.blurple())
         embed.set_footer(text=omg)
-        await ctx.send(embed=embed)
         m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
         ch = self.client.get_channel(845245176888688660)
         await ch.send(m)
         
-        await ctx.send("",
+        await ctx.send(embed=embed,
                       components=[
                       Button(style=ButtonStyle.URL, label="Invite!", url="https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot%20applications.commands")
                       ],
