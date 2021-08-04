@@ -20,6 +20,7 @@ chardet==3.0.4
 click==7.1.2
 cycler==0.10.0
 discord-py-slash-command
+discord_components
 google-api-core==1.26.3
 google-api-python-client==2.1.0
 google-auth==1.28.0
