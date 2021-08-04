@@ -192,8 +192,8 @@ class Function(commands.Cog):
         await ctx.send(
             "Help us grow!",
             components=[
-                Button(label="top.gg",url="https://top.gg/bot/784473379183788055"),
-                Button(label="discordbotlist.com",url="https://discordbotlist.com/bots/upsilon/upvote")
+                Button(style=ButtonStyle.URL,label="top.gg",url="https://top.gg/bot/784473379183788055"),
+                Button(style=ButtonStyle.URL,label="discordbotlist.com",url="https://discordbotlist.com/bots/upsilon/upvote")
             ],
         )
         res = await self.client.wait_for("button_click")
