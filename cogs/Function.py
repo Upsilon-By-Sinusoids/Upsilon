@@ -8,6 +8,9 @@ from async_timeout import timeout
 import discord.utils
 import math
 import random
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
+from discord_slash.utils.manage_components import wait_for_component
+from discord_slash.utils.manage_components import create_select, create_select_option, create_actionrow
 import asyncio
 import functools
 import json
@@ -180,12 +183,20 @@ class Function(commands.Cog):
     @commands.command(name="upvote", aliases=["vote", "vote for bot", "upvote bot"])
     async def _upvote(self, ctx):
         """Vote for me !!!"""
-        embed = discord.Embed(title="Vote for Upsilon",url="https://discordbotlist.com/bots/upsilon/upvote",color=discord.Color.green())
-        embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
-        embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
-        embed.set_image(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
+        embed = discord.Embed(title="Vote for Pegasus",color=discord.Color.green())
+        e#mbed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
+        #embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
+        embed.set_thumbnail(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
         embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
+        
+        await ctx.send(
+            "Help us grow!",
+            components=[
+                Button(style=2,label="top.gg",url="https://top.gg/bot/784473379183788055"),
+                Button(style=2,label="discordbotlist.com")
+            ],
+        )
 
 
     @cog_ext.cog_slash(name="quote", description="Generates a random Quote")
