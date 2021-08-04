@@ -37,7 +37,8 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.MemberNotFound):
             await ctx.send(f"Sorry buddy, This person does not exist. Promise me you will stop taking drugs to prevent hallucinations.")
         else:
-            print(error)
+            l = self.client.get_channel(872466770592661564)
+            await l.send(error)
         
          
         
