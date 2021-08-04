@@ -184,7 +184,7 @@ class Function(commands.Cog):
     async def _upvote(self, ctx):
         """Vote for me !!!"""
         embed = discord.Embed(title="Vote for Pegasus",color=discord.Color.green())
-        e#mbed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
+        #embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
         #embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
         embed.set_thumbnail(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
         embed.set_footer(text="Help us grow!")
