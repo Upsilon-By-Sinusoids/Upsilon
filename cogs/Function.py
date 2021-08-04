@@ -168,17 +168,24 @@ class Function(commands.Cog):
     async def _invite(self, ctx):
         """Generate an invite link to invite this bot to your server"""
         ur = 'https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot%20applications.commands'
-        time.sleep(0.2)
+        
         omg = 'Have fun using this bot and contact the owner of the server SINUSOIDS if you face any incovenience.'
         embed = discord.Embed(title="Invite Link", url=ur, color=discord.Color.blurple())
         embed.set_footer(text=omg)
         await ctx.send(embed=embed)
         m = f"{ctx.message.author.name} generated an invite link in {ctx.message.guild}"
-        channel = self.client.get_channel(845245176888688660)
-        await channel.send(m)
+        ch = self.client.get_channel(845245176888688660)
+        await ch.send(m)
         
-  
-        
+        await ctx.send("",
+                      components=[
+                      Button(style=ButtonStyle.URL, label="Invite!", url="https://discord.com/api/oauth2/authorize?client_id=784473379183788055&permissions=8&scope=bot%20applications.commands")
+                      ],
+                      )
+        r = await self.client.wait_for("button_click")
+        if r.channel == ctx.channel:
+            await ch.send(m)
+           
         
     @commands.command(name="upvote", aliases=["vote", "vote for bot", "upvote bot"])
     async def _upvote(self, ctx):
