@@ -187,16 +187,16 @@ class Function(commands.Cog):
         #embed.add_field(name="Vote on top.gg !",value="https://top.gg/bot/784473379183788055")
         #embed.add_field(name="Vote on Discord Bot List!",value="https://discordbotlist.com/bots/upsilon/upvote")
         embed.set_thumbnail(url=("https://cdn.discordapp.com/attachments/784494481159618560/849999269628346398/ucandoit.gif"))
-        embed.set_footer(text="Help us grow!")
         await ctx.send(embed=embed)
         
         await ctx.send(
             "Help us grow!",
             components=[
-                Button(style=2,label="top.gg",url="https://top.gg/bot/784473379183788055"),
-                Button(style=2,label="discordbotlist.com")
+                Button(label="top.gg",url="https://top.gg/bot/784473379183788055"),
+                Button(label="discordbotlist.com",url="https://discordbotlist.com/bots/upsilon/upvote")
             ],
         )
+        res = await self.client.wait_for("button_click")
 
 
     @cog_ext.cog_slash(name="quote", description="Generates a random Quote")
