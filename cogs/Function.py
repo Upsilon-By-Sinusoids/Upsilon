@@ -70,7 +70,14 @@ class Function(commands.Cog):
         message = f" \"{message.content}\" was sent by {message.author} and later deleted in the channel {message.channel} of the server {message.guild}"
         channel = self.client.get_channel(865789884035498004)
         await channel.send(message)
-  
+       
+    @commands.Cog.listener()
+    async def on_message_edit(self, message_before, message_after):
+        if message.channel.id == 845245176888688660 or message.channel.id == 865789884035498004:
+            return
+        me = f"``{message_before.content}`` was changed to ``{message_after.content}`` by {message_before.member.name} in the channel {message_before.channel} of the server {message_before.channel.guild}"
+        chan = self.client.get_channel(865789884035498004)
+        await chan.send(me)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
