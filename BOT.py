@@ -9,6 +9,7 @@ from discord_components import DiscordComponents, Button, ButtonStyle, Interacti
 import json
 import discord
 import logging
+import asyncio 
 
 def get_prefix(client, message):
     with open("prefixes.json", "r") as f:
@@ -142,7 +143,7 @@ async def on_member_join(cxt, ajrkgbmember): #member only remove everything else
 async def change_status():
     for _ in range(2):
         await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=next(stats)))
-        asyncio.sleep(60)
+        await asyncio.sleep(60)
         await client.change_presence(activity=discord.Game(next(status)))
 
 @commands.has_role("Strong Nuclear Force")
