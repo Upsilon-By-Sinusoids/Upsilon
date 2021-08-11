@@ -85,7 +85,7 @@ class Moderation(commands.Cog):
         
         
     @commands.command()
-    @commands.has_permissions(manage_guild=True)
+    @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=10):
         """This commands can be used for bulk message deletion, the default value is 10; however, you can delete as many as you want"""
         m = f"{amount} messages deleted by {ctx.message.author.name} in {ctx.message.guild}"
