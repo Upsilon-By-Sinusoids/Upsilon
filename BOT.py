@@ -70,7 +70,6 @@ intents = discord.Intents().all()
 client = commands.Bot(command_prefix = '.', help_command=CustomHelpCommand(), case_insensitive=True, intents = intents)
 slash = SlashCommand(client, sync_commands=True)
 status = cycle(['against Authoritarian Governments that spy on their citizens', 'Microsoft Sucks!!', 'Discord getting Uglier.😕 ', 'SAVE THE TREES'])
-stats = cycle(["The Suicide Squad 💀", "The Suicide Squad 💀"])
 
 @client.event
 async def on_ready():
@@ -141,10 +140,7 @@ async def on_member_join(cxt, ajrkgbmember): #member only remove everything else
 
 @tasks.loop(hours=1)
 async def change_status():
-    for _ in range(2):
-        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=next(stats)))
-        await asyncio.sleep(3600)
-        await client.change_presence(activity=discord.Game(next(status)))
+    await client.change_presence(activity=discord.Game(next(status)))
 
 @commands.has_role("Strong Nuclear Force")
 @client.command(hidden=True)
