@@ -8,7 +8,7 @@ from async_timeout import timeout
 import discord.utils
 import math
 import random
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
+from discord_components import DiscordComponents, Button, ButtonStyle
 from discord_slash.utils.manage_components import wait_for_component
 from discord_slash.utils.manage_components import create_select, create_select_option, create_actionrow
 import asyncio
