@@ -5,7 +5,7 @@ import os
 from discord.ext import commands, tasks
 from itertools import cycle
 from decouple import config
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
+from discord_components import *
 import json
 import discord
 import logging
