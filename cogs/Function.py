@@ -212,14 +212,13 @@ class Function(commands.Cog):
         res = await self.client.wait_for("button_click")
 
 
-    @cog_ext.cog_slash(name="quote", description="Generates a random Quote")
     @commands.command(name="quote")
-    async def _quote(self, ctx: SlashContext):
+    async def _quote(self, ctx):
         """generates a randome quote"""
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
         quote = json_data[0]['q'] + " -" + json_data[0]['a']
-        await ctx.send(quote)
+        await ctx.send(embed = discord.Embed(title=f"{quote}", color=discord.Color.blurple()))
 
         
         
