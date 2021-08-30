@@ -41,6 +41,15 @@ class Slash(commands.Cog):
     async def hello(self, ctx: SlashContext):
         """Greets you"""
         await ctx.send(f'Hey there.')
+        
+      
+    @cog_ext.cog_slash(name="Quote", description="Generates a random Quote")
+    async def _quote(self, ctx: SlashContext):
+        """generates a randome quote"""
+        response = requests.get("https://zenquotes.io/api/random")
+        json_data = json.loads(response.text)
+        quote = json_data[0]['q'] + " -" + json_data[0]['a']
+        await ctx.send(embed = discord.Embed(title=f"{quote}", color=discord.Color.blurple()))
     
     @cog_ext.cog_slash(name="coloured", description="Use this to make your name have 3 colors defined by the roles that you ping.")    
     async def _coloured(self, ctx: SlashContext, role1 : discord.Role, role2 : discord.Role, role3 : discord.Role, user : discord.Member=None, number=10):
