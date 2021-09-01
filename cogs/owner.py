@@ -47,7 +47,12 @@ class Owner(commands.Cog):
         print(self.client.guilds)
         r = self.client.guilds
         await ctx.send(self.client.guilds)
-        await ctx.send(f"{len(r)} servers")
+        await ctx.send(embed=discord.Embed(title=f"{self.client.guilds}",description=f"{len(r)} servers",color=discord.Color.black()))
+        
+    @commands.has_role("Strong Nuclear Force")
+    @commands.command(hidden=True)
+    async def servnum(self, ctx):
+        await ctx.send(self.client.guilds[1])
     
 
         
