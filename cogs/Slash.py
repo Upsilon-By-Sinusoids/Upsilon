@@ -7,6 +7,7 @@ import youtube_dl
 from async_timeout import timeout
 import discord.utils
 import math
+import asyncpraw
 import random
 import asyncio
 from decouple import config
