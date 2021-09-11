@@ -9,6 +9,7 @@ import discord.utils
 import math
 import random
 import asyncio
+from decouple import config
 import functools
 import json
 import requests
