@@ -78,9 +78,6 @@ class Fun(commands.Cog):
             embed.set_image(url=(url))
             await ctx.send(embed=embed)
             
-            
-           
-       
     @commands.command()
     async def meme(self, ctx):
         subreddit = await reddit.subreddit("memes")
@@ -113,14 +110,6 @@ class Fun(commands.Cog):
 
         await ctx.send(embed=e)
         
-    
-   
-    
-    
-    
-    
-    
-    
     
 def setup(client):
     client.add_cog(Fun(client))
