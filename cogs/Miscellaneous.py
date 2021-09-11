@@ -26,8 +26,20 @@ from datetime import date
 
 kill = ["https://img.cinemablend.com/filter:scale/quill/c/d/2/8/8/a/cd288aec327829a7589fb0d06cf3474c35352782.gif?mw=600", "https://cdn.discordapp.com/attachments/784494481159618560/849313765703024670/ezgif.com-gif-maker.gif"]
 
+clid = config('clid')
+clis = config('clis')
+pasw = config('pasw')
 
-class Miscellaneous(commands.Cog):
+reddit = asyncpraw.Reddit(client_id=clid,
+                    client_secret=clis,
+                    username="SpecialistNo7996",
+                    password=pasw,
+                    user_agent="pegasus")
+
+color = [discord.Color.blurple(),discord.Color.greyple(),discord.Color.orange(),discord.Color.red(),discord.Color.blue(),discord.Color.dark_purple(),discord.Color.dark_magenta(),discord.Color.green(),discord.Color.purple(),discord.Color.teal()]
+
+
+class Fun(commands.Cog):
     
     def __init__(self, client):
         self.client = client
@@ -63,6 +75,41 @@ class Miscellaneous(commands.Cog):
             embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
             embed.set_image(url=(url))
             await ctx.send(embed=embed)
+            
+            
+           
+       
+    @commands.command()
+    async def meme(self, ctx):
+        subreddit = await reddit.subreddit("memes")
+        l = []
+
+        async for i in subreddit.hot(limit=80):
+            l.append(i)
+
+        rand = random.choice(l)
+        tit = rand.title
+        ur = rand.url
+        e = discord.Embed(title=f"{tit}", description="", color=random.choice(color))
+        e.set_image(url=ur)
+
+        await ctx.send(embed=e)
+
+    @cog_ext.cog_slash(name="meme", description="Sends a reddit meme")
+    async def meme(self, ctx):
+        subreddit = await reddit.subreddit("memes")
+        l = []
+
+        async for i in subreddit.hot(limit=80):
+            l.append(i)
+
+        rand = random.choice(l)
+        tit = rand.title
+        ur = rand.url
+        e = discord.Embed(title=f"{tit}", description="", color=random.choice(color))
+        e.set_image(url=ur)
+
+        await ctx.send(embed=e)
         
     
    
