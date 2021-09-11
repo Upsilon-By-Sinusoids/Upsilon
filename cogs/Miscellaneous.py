@@ -63,38 +63,8 @@ class Fun(commands.Cog):
             embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
             embed.set_image(url=(url))
             await ctx.send(embed=embed)
-      
-    @cog_ext.cog_slash(name="kill", description="Your personal Death Note!")
-    async def _kill(self, ctx, user : discord.Member):
-        if user == ctx.author:
-            embed=discord.Embed(title=f"{user}, I know it seems tempting to take the easy way out, my advice is that you listen to some good ol' songs by typing .play [song name].", description='', color=0xe74c3c)
-            #embed.set_image(url=("https://tenor.com/MTjK.gif"))
-            await ctx.send(embed=embed)
-            await asyncio.sleep(1.5)
-            await ctx.send(embed=discord.Embed(title="Go on then, what are you waiting for?",description="",color=0xe74c3c))
-        else:
-            url = random.choice(kill)
-            embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
-            embed.set_image(url=(url))
-            await ctx.send(embed=embed)
             
     @commands.command()
-    async def meme(self, ctx):
-        subreddit = await reddit.subreddit("memes")
-        l = []
-
-        async for i in subreddit.hot(limit=80):
-            l.append(i)
-
-        rand = random.choice(l)
-        tit = rand.title
-        ur = rand.url
-        e = discord.Embed(title=f"{tit}", description="", color=random.choice(color))
-        e.set_image(url=ur)
-
-        await ctx.send(embed=e)
-
-    @cog_ext.cog_slash(name="meme", description="Sends a reddit meme")
     async def meme(self, ctx):
         subreddit = await reddit.subreddit("memes")
         l = []
