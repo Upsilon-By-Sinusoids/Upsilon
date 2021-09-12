@@ -79,6 +79,21 @@ class Fun(commands.Cog):
         e.set_image(url=ur)
 
         await ctx.send(embed=e)
+       
+     
+    @commands.command(name="xkcd")
+    async def _xkcd(self, ctx):
+        rand = random.randint(1,2500)
+        r = requests.get(f"https://xkcd.com/{rand}/")
+        n1 = r.text.find("Image URL")
+        u = r.text[n1+48:n1+130]
+        x = u.find("png")
+        url = u[:x+3]
+        title = "An XKCD meme"
+        err = discord.Embed(title=f"{title}", description="", color=random.choice(color))
+        err.set_image(url=url)
+
+        await ctx.send(embed=err)
         
     
 def setup(client):
