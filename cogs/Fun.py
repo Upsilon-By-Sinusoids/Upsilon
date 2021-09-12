@@ -52,6 +52,7 @@ class Fun(commands.Cog):
         
     @commands.command()
     async def kill(self, ctx, user : discord.Member):
+        """Your personal death note!"""
         if user == ctx.author:
             embed=discord.Embed(title=f"{user}, I know it seems tempting to take the easy way out, my advice is that you listen to some good ol' songs by typing .play [song name].", description='', color=0xe74c3c)
             #embed.set_image(url=("https://tenor.com/MTjK.gif"))
@@ -66,6 +67,7 @@ class Fun(commands.Cog):
             
     @commands.command()
     async def meme(self, ctx):
+        """Sends a reddit meme"""
         subreddit = await reddit.subreddit("memes")
         l = []
 
@@ -83,6 +85,7 @@ class Fun(commands.Cog):
      
     @commands.command(name="xkcd")
     async def _xkcd(self, ctx):
+        """Sends an XKCD meme"""
         rand = random.randint(1,2500)
         r = requests.get(f"https://xkcd.com/{rand}/")
         n1 = r.text.find("Image URL")
