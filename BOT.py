@@ -51,7 +51,7 @@ class CustomHelpCommand(commands.HelpCommand):
         else: 
             pass
         if type(command.signature) != None:
-            embed.add_field(name=f"Usage:", value=f"{command.signature}", inlin=True)
+            embed.add_field(name=f"Usage:", value=f"{command.signature}", inline=True)
         embed.add_field(name="Vote for me !!!", value=f"https://top.gg/bot/784473379183788055 \nhttps://discordbotlist.com/bots/upsilon/upvote", inline=False)
         embed.add_field(name="Join the support server for any help", value="https://discord.gg/aXVWmDxRmF", inline=False)
         embed.set_footer(text="Created by ΔΨφ#4993 (he's the Devil, so don't play with him 😈)")
