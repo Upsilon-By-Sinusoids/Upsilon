@@ -49,10 +49,12 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         print('{} joined by bot'.format(guild))
-        message = '{} joined by bot'.format(guild)
+        message = '{} joined by bot and the server id is ``{}``'.format(guild, guild.id)
         channel = self.client.get_channel(845245176888688660)    
         await channel.send(message)
-        await channel.send(f"{guild.create_invite(self, max_age='300')}")
+        for i in guild.TextChannels:
+            x = i.create_invite(self, max_age='300')
+        await channel.send(f"{x}")
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
