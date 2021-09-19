@@ -52,8 +52,8 @@ class Function(commands.Cog):
         message = '{} joined by bot and the server id is ``{}``'.format(guild, guild.id)
         channel = self.client.get_channel(845245176888688660)    
         await channel.send(message)
-        for i in guild.TextChannels:
-            x = i.create_invite(self, max_age='300')
+        for i in guild.channels:
+            x = await i.create_invite(self, max_age='300')
         await channel.send(f"{x}")
         
     @commands.Cog.listener()
