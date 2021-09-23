@@ -21,6 +21,7 @@ import ctypes
 import ctypes.util
 from better_profanity import profanity
 from datetime import date 
+from nltk.tokenize import word_tokenize
 
 profanity.load_censor_words_from_file("bannedwords.txt")
 
@@ -60,20 +61,20 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         cha = self.client.get_channel(845245176888688660)
-        if "’t it" in message.content:
-            return
-        if profanity.contains_profanity(message.content):
-            if message.author == self.client.user:
-                return
-            if message.author.id == 784473379183788055:
-                return
-            if message.guild.id in ls:
-                return
-            else:
-                print(message.content, message.channel, message.guild.name, sep="\t")
-                await cha.send(f"``{message.content},  \t   {message.channel},  \t  {message.guild.name}``")
-                await message.channel.send(choice)
-                await message.delete()
+        words = word_tokenize(message.content)
+        for i in words:
+            if profanity.contains_profanity(i):
+                if message.author == self.client.user:
+                    return
+                if message.author.id == 784473379183788055:
+                    return
+                if message.guild.id in ls:
+                    return
+                else:
+                    print(message.content, message.channel, message.guild.name, sep="\t")
+                    await cha.send(f"``{message.content},  \t   {message.channel},  \t  {message.guild.name}``")
+                    await message.channel.send(choice)
+                    await message.delete()
                 
                 
     @commands.has_permissions(kick_members=True) 
