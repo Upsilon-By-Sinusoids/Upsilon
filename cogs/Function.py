@@ -40,6 +40,15 @@ class Function(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Bot is online')
+       
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        li = [800448021242052659, 784455316468793406]
+        c = message.content
+        if message.channel.guild.id not in li:
+            return
+        if len(message.mentions) >= 7:
+            await message.author.ban(reason = "pinging")
         
     #@commands.Cog.listener()
     #async def on_message(message):
