@@ -100,13 +100,14 @@ class Fun(commands.Cog):
 
         await ctx.send(embed=err)
         
-        
-    @commands.commmand(name="gif")
+        """
+    @commands.command(name="gif")
     async def _gif(self, ctx, *, args):
-        r = requests.get("https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (args, token, limit))
+        token = 
+        r = requests.get("https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (args, token, 5))
         top8 = json.loads(r.content)
         print(top8)
-        print()
+        print()"""
     
     
 def setup(client):
