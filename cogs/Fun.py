@@ -50,6 +50,7 @@ class Fun(commands.Cog):
     async def on_ready(self):
         print("Fun is working")
         
+        
     @commands.command()
     async def kill(self, ctx, user : discord.Member):
         """Your personal death note!"""
@@ -64,6 +65,7 @@ class Fun(commands.Cog):
             embed=discord.Embed(title=f"{user} was killed by {ctx.author}", description='', color=0xe91e63)
             embed.set_image(url=(url))
             await ctx.send(embed=embed)
+            
             
     @commands.command()
     async def meme(self, ctx):
@@ -98,6 +100,14 @@ class Fun(commands.Cog):
 
         await ctx.send(embed=err)
         
+        
+    @commands.commmand(name="gif")
+    async def _gif(self, ctx, *, args):
+        r = requests.get("https://g.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (args, token, limit))
+        top8 = json.loads(r.content)
+        print(top8)
+        print()
+    
     
 def setup(client):
     client.add_cog(Fun(client))
