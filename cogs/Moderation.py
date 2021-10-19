@@ -60,7 +60,7 @@ class Moderation(commands.Cog):
         choice = random.choice(responses)
         choice = choice.format(message.author.mention)
         cha = self.client.get_channel(845245176888688660)
-        if profanity.contains_profanity(i):
+        if profanity.contains_profanity(message.content):
             if message.author == self.client.user:
                 return
             if message.author.id == 784473379183788055:
